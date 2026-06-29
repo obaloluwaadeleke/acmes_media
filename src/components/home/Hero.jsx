@@ -53,7 +53,7 @@ export default function Hero() {
         <h1 className="heading-display max-w-5xl mb-6">
           <HeroReveal as="span" text="We build brands" delay={0} />
           <br className="hidden sm:block" />
-          <HeroReveal as="span" text="and the digital work that" delay={line2Delay} />
+          <HeroReveal as="span" text="and the digital work that " delay={line2Delay} />
           <br className="hidden sm:block" />
           <HeroReveal as="span" text="grows them." delay={line3Delay} wordClassName="text-accent not-italic" />
         </h1>
