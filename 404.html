@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found | Acmes Media</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #080808;
+      color: #F2F2F2;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.25rem;
+      color: #F2F2F2;
+      text-decoration: none;
+      margin-bottom: 3rem;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #C8A96E; display: inline-block; margin-bottom: 2px; }
+    .code {
+      font-family: monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #C8A96E;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    p {
+      color: #9A9A9A;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+    .actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #C8A96E;
+      color: #080808;
+      font-weight: 500;
+      font-size: 0.875rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #DFC28F; }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid #232323;
+      color: #F2F2F2;
+      font-weight: 500;
+      font-size: 0.875rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: #C8A96E; color: #C8A96E; }
+    :focus-visible { outline: 2px solid #C8A96E; outline-offset: 3px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="content">
+    <a href="/" class="brand" aria-label="Acmes Media — Home">
+      Acmes<span class="dot" aria-hidden="true"></span>Media
+    </a>
+    <p class="code">404</p>
+    <h1>Page not found.</h1>
+    <p>The page you're looking for doesn't exist or may have been moved. Let's get you back somewhere useful.</p>
+    <div class="actions">
+      <a href="/" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Go home
+      </a>
+      <a href="/contact" class="btn-ghost">
+        Contact us
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

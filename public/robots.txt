@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://acmesmedia.com/sitemap.xml

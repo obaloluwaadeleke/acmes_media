@@ -1,0 +1,22 @@
+{
+  "name": "Acmes Media",
+  "short_name": "Acmes Media",
+  "description": "Creative and digital agency. We build brands and the digital work that grows them.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

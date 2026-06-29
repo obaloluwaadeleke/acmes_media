@@ -1,0 +1,353 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   shadcn/ui CSS variables — dark theme, mapped to the Acmes Media brand.
+   Components added via `npx shadcn@latest add <component>` read from here.
+
+   Colour reference (HSL → hex):
+     0 0% 3.1%     → #080808  (bg)
+     0 0% 5.9%     → #0f0f0f  (card surface)
+     0 0% 9.8%     → #191919  (secondary / surface-2)
+     0 0% 13.7%    → #232323  (border)
+     38 45% 61%    → #C8A96E  (gold accent / primary)
+     0 0% 94.9%    → #F2F2F2  (foreground / white text)
+     0 0% 60.4%    → #9A9A9A  (muted text)
+───────────────────────────────────────────────────────────────────────────── */
+:root {
+  --background:            0 0% 3.1%;
+  --foreground:            0 0% 94.9%;
+
+  --card:                  0 0% 5.9%;
+  --card-foreground:       0 0% 94.9%;
+
+  --popover:               0 0% 5.9%;
+  --popover-foreground:    0 0% 94.9%;
+
+  --primary:               38 45% 61%;
+  --primary-foreground:    0 0% 3.1%;
+
+  --secondary:             0 0% 9.8%;
+  --secondary-foreground:  0 0% 94.9%;
+
+  --muted:                 0 0% 9.8%;
+  --muted-foreground:      0 0% 60.4%;
+
+  --accent:                38 45% 61%;
+  --accent-foreground:     0 0% 3.1%;
+
+  --destructive:           0 62.8% 40%;
+  --destructive-foreground:0 0% 94.9%;
+
+  --border:                0 0% 13.7%;
+  --input:                 0 0% 13.7%;
+  --ring:                  38 45% 61%;
+
+  --radius:                0.75rem;
+
+  /* Chart palette (warm tones to complement gold) */
+  --chart-1:               38 45% 61%;
+  --chart-2:               200 60% 50%;
+  --chart-3:               280 50% 55%;
+  --chart-4:               140 50% 45%;
+  --chart-5:               0  60% 55%;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans;
+    overflow-x: hidden;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #C8A96E;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .btn-primary:focus-visible,
+  .btn-ghost:focus-visible {
+    outline-color: #fff;
+  }
+
+  ::selection {
+    background: rgba(200, 169, 110, 0.3);
+    color: #F2F2F2;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #080808; }
+  ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #C8A96E; }
+}
+
+@layer components {
+  .container-site {
+    @apply max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16;
+  }
+
+  .section-pad {
+    @apply py-20 md:py-28 lg:py-36;
+  }
+
+  .label-tag {
+    @apply text-accent text-xs font-sans font-medium tracking-[0.2em] uppercase;
+  }
+
+  .heading-display {
+    @apply font-serif text-display-xl text-ink;
+  }
+
+  .heading-xl {
+    @apply font-serif text-display-lg text-ink;
+  }
+
+  .heading-lg {
+    @apply font-serif text-display-md text-ink;
+  }
+
+  .heading-md {
+    @apply font-serif text-display-sm text-ink;
+  }
+
+  .body-lg {
+    @apply text-[1.125rem] leading-relaxed text-ink-muted;
+  }
+
+  .body-md {
+    @apply text-base leading-relaxed text-ink-muted;
+  }
+
+  /* ── btn-primary ──────────────────────────────────────────────────────────
+     Architecture: ::after = gold fill (z:-1), ::before = 2px animated ring
+     (mask-composite carves the ring so it never covers text, pointer-events:none)
+  ─────────────────────────────────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 font-sans font-medium text-sm tracking-wide
+           px-7 py-4 rounded-full cursor-pointer text-bg;
+    position: relative;
+    isolation: isolate;
+    box-shadow: 0 0 22px rgba(200,169,110,0.22), inset 0 1px 0 rgba(255,255,255,0.18);
+    transition: transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 280ms ease;
+  }
+
+  /* Gold fill — sits behind text */
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: inherit;
+    background: linear-gradient(155deg, #DEC07D 0%, #C8A96E 45%, #B8955A 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.22);
+    z-index: -1;
+  }
+
+  /* 2px animated gold ring — mask-composite carves out center, leaving only the ring */
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(
+      from var(--btn-angle, 0deg),
+      #8a6830  0deg,
+      #C8A96E  38deg,
+      #FFD97D  56deg,
+      #FFFBE0  72deg,
+      #FFD97D  88deg,
+      #C8A96E  114deg,
+      #8a6830  195deg,
+      #8a6830  360deg
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                  linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: btnBorderSpin 2.5s linear infinite;
+    filter: blur(0.5px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* 3D lift on hover */
+  .btn-primary:hover {
+    transform: perspective(480px) rotateX(-8deg) rotateY(2deg) translateY(-3px) scale(1.03);
+    box-shadow: 0 20px 45px rgba(200,169,110,0.32),
+                0 6px 18px rgba(0,0,0,0.45),
+                inset 0 1px 0 rgba(255,255,255,0.26);
+  }
+  .btn-primary:active {
+    transform: perspective(480px) rotateX(3deg) translateY(1px) scale(0.97);
+    transition-duration: 100ms;
+  }
+
+  /* ── btn-ghost ─────────────────────────────────────────────────────────────
+     Architecture: ::after = glass fill (z:-1), ::before = 2px animated ring
+  ─────────────────────────────────────────────────────────────────────────── */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 font-sans font-medium text-sm tracking-wide
+           px-7 py-4 rounded-full cursor-pointer text-ink;
+    position: relative;
+    isolation: isolate;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 2px 12px rgba(0,0,0,0.28);
+    transition: color 250ms ease,
+                transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 280ms ease;
+  }
+
+  /* Glass fill — sits behind text */
+  .btn-ghost::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: inherit;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: -1;
+    transition: background 250ms ease;
+  }
+  .btn-ghost:hover::after {
+    background: rgba(200,169,110,0.07);
+  }
+
+  /* 2px animated gold ring */
+  .btn-ghost::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(
+      from var(--btn-angle, 0deg),
+      rgba(18,14,6,0.98)      0deg,
+      rgba(150,118,55,0.55)   26deg,
+      rgba(255,200,68,1)      50deg,
+      rgba(255,248,198,0.96)  66deg,
+      rgba(255,200,68,1)      82deg,
+      rgba(150,118,55,0.55)   106deg,
+      rgba(18,14,6,0.98)      155deg,
+      rgba(18,14,6,0.98)      360deg
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                  linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: btnBorderSpin 2.5s linear infinite;
+    filter: blur(0.5px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* 3D lift on hover */
+  .btn-ghost:hover {
+    color: #C8A96E;
+    transform: perspective(480px) rotateX(-8deg) rotateY(2deg) translateY(-3px) scale(1.03);
+    box-shadow: inset 0 1px 0 rgba(200,169,110,0.12),
+                0 18px 38px rgba(0,0,0,0.4),
+                0 0 28px rgba(200,169,110,0.1);
+  }
+  .btn-ghost:active {
+    transform: perspective(480px) rotateX(3deg) translateY(1px) scale(0.97);
+    transition-duration: 100ms;
+  }
+
+  .btn-text {
+    @apply inline-flex items-center gap-2 text-accent font-sans font-medium text-sm
+           transition-all duration-300 hover:gap-3;
+  }
+
+  .divider {
+    @apply border-t border-border;
+  }
+
+  .card-surface {
+    @apply bg-bg-surface border border-border rounded-2xl overflow-hidden
+           transition-all duration-300 hover:border-border-light;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent;
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+/* Skip link (accessibility) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+}
+.skip-link:focus {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1.25rem;
+  background: #fff;
+  color: #080808;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  z-index: 10000;
+}
+
+/* Visually hidden (screen reader only) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Marquee animation paused on hover */
+.marquee-track:hover { animation-play-state: paused; }
+
+/* Animated golden border — custom angle property */
+@property --btn-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes btnBorderSpin {
+  to { --btn-angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-track { animation: none !important; }
+}
