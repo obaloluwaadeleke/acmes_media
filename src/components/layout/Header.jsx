@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import LogoComponent from '../ui/LogoComponent';
 
 const navLinks = [
   { to: '/about', label: 'About' },
@@ -74,10 +75,11 @@ export default function Header() {
           <nav className="flex items-center justify-between h-20" aria-label="Main navigation">
 
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-1 group" aria-label="Acmes Media — Home">
-              <span className="font-serif text-xl text-ink tracking-tight">Acmes</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block mb-0.5 group-hover:scale-125 transition-transform duration-200" aria-hidden="true" />
-              <span className="font-serif text-xl text-ink tracking-tight">Media</span>
+            <Link to="/" className="flex items-center gap-1 group" aria-label="Acmes Media — Home"> 
+            <div className="h-10">
+            <LogoComponent />
+
+            </div>
             </Link>
 
             {/* Desktop nav */}

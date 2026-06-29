@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import LogoComponent from '../ui/LogoComponent';
 
 const navLinks = [
   { to: '/about', label: 'About Us' },
@@ -28,11 +29,15 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link to="/" className="inline-flex items-center gap-1 group mb-4" aria-label="Acmes Media — Home">
-              <span className="font-serif text-xl text-ink tracking-tight">Acmes</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block mb-0.5" aria-hidden="true" />
-              <span className="font-serif text-xl text-ink tracking-tight">Media</span>
-            </Link>
+            
+                        {/* Logo */}
+                        <Link to="/" className="flex items-center gap-1 group" aria-label="Acmes Media — Home"> 
+                        <div className="h-10">
+                        <LogoComponent />
+            
+                        </div>
+                        </Link>
+            
             <p className="text-ink-muted text-sm leading-relaxed mb-6 max-w-xs">
               We build brands and the digital work that grows them. Creative and digital agency since 2016.
             </p>
