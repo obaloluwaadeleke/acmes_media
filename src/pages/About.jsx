@@ -137,7 +137,7 @@ export default function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-px bg-border rounded-2xl overflow-hidden">
             {process.map(({ step, title, body }, i) => (
-              <RevealWrapper key={step} delay={0.05 * i}>
+              <RevealWrapper key={step} delay={0.08 * i}>
                 <div className="bg-bg p-8 h-full">
                   <span className="text-accent font-mono text-xs tracking-widest mb-4 block">{step}</span>
                   <h3 className="text-ink font-serif text-xl mb-3">{title}</h3>
@@ -164,7 +164,7 @@ export default function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map(({ title, body }, i) => (
-              <RevealWrapper key={title} delay={0.05 * i}>
+              <RevealWrapper key={title} delay={0.08 * i}>
                 <div className="flex gap-4 p-6 card-surface h-full">
                   <span className="text-accent mt-1 shrink-0 text-lg" aria-hidden="true">→</span>
                   <div>

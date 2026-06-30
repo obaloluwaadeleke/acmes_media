@@ -115,7 +115,7 @@ export default function Blog() {
               {filtered.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {filtered.map((post, i) => (
-                    <RevealWrapper key={post.slug} delay={0.05 * i}>
+                    <RevealWrapper key={post.slug} delay={0.08 * (i % 3)}>
                       <Link to={`/blog/${post.slug}`} className="group card-surface flex flex-col h-full hover:bg-bg-hover transition-colors duration-200">
                         {post.coverImage ? (
                           <img

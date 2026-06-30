@@ -89,7 +89,7 @@ export default function Portfolio() {
           {/* Project grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filtered.map((project, i) => (
-              <RevealWrapper key={project.id} delay={0.06 * i}>
+              <RevealWrapper key={project.id} delay={0.08 * (i % 3)}>
                 <Link to={`/portfolio/${project.id}`} className="group card-surface overflow-hidden h-full flex flex-col">
                   {/* Project image */}
                   <div className={`h-56 relative overflow-hidden ${!project.image ? `bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center` : ''}`}>
