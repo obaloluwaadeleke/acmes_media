@@ -4,7 +4,7 @@ date: '2026-05-14'
 category: 'Branding'
 readTime: '5 min read'
 excerpt: 'Most small businesses treat branding as decoration. The ones that grow treat it as infrastructure. Here is what that distinction actually means in practice.'
-coverImage: ''
+coverImage: '/images/blog/why-branding-matters-for-small-businesses.webp'
 featured: 'true'
 ---
 

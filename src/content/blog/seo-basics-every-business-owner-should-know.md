@@ -4,7 +4,7 @@ date: '2026-03-10'
 category: 'Digital Marketing'
 readTime: '7 min read'
 excerpt: 'You do not need to understand algorithms to get SEO right. You need to understand your customer. Here is where to start.'
-coverImage: ''
+coverImage: '/images/blog/seo-basics-every-business-owner-should-know.webp'
 featured: 'false'
 ---
 

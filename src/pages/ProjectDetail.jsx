@@ -73,14 +73,25 @@ export default function ProjectDetail() {
         <div className="container-site py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
             
-            {/* Visual Showcase (Gradient block matching Portfolio list page style) */}
+            {/* Visual Showcase */}
             <div className="lg:col-span-2 space-y-8">
               <RevealWrapper>
-                <div className={`h-[300px] sm:h-[450px] bg-gradient-to-br ${gradients[projectIndex % gradients.length]} rounded-2xl flex items-center justify-center relative overflow-hidden border border-border`}>
-                  <div className="text-accent/10 font-serif text-[12rem] sm:text-[18rem] font-bold select-none">
-                    {project.title.charAt(0)}
-                  </div>
-                  <div className="absolute inset-0 grid-bg opacity-20" />
+                <div className={`h-[300px] sm:h-[450px] rounded-2xl relative overflow-hidden border border-border ${!project.image ? `bg-gradient-to-br ${gradients[projectIndex % gradients.length]} flex items-center justify-center` : ''}`}>
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <>
+                      <div className="text-accent/10 font-serif text-[12rem] sm:text-[18rem] font-bold select-none">
+                        {project.title.charAt(0)}
+                      </div>
+                      <div className="absolute inset-0 grid-bg opacity-20" />
+                    </>
+                  )}
                 </div>
               </RevealWrapper>
             </div>

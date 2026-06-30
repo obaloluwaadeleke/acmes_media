@@ -42,10 +42,19 @@ export default function FeaturedWork() {
           {featured[0] && (
             <RevealWrapper delay={0.1} className="lg:col-span-7">
               <Link to={`/portfolio/${featured[0].id}`} className="group block card-surface overflow-hidden h-full">
-                <div className={`h-72 bg-gradient-to-br ${placeholderGradients[0]} flex items-center justify-center relative overflow-hidden`}>
-                  <div className="text-accent/20 font-serif text-8xl font-bold select-none">
-                    {featured[0].title.charAt(0)}
-                  </div>
+                <div className={`h-72 relative overflow-hidden ${!featured[0].image ? `bg-gradient-to-br ${placeholderGradients[0]} flex items-center justify-center` : ''}`}>
+                  {featured[0].image ? (
+                    <img
+                      src={featured[0].image}
+                      alt={featured[0].title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="text-accent/20 font-serif text-8xl font-bold select-none">
+                      {featured[0].title.charAt(0)}
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-bg/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span className="inline-flex items-center gap-2 text-ink font-medium text-sm bg-bg/80 backdrop-blur-sm px-5 py-3 rounded-full border border-border">
                       View project <ArrowUpRight size={14} aria-hidden="true" />
@@ -71,10 +80,19 @@ export default function FeaturedWork() {
             {featured.slice(1).map((project, i) => (
               <RevealWrapper key={project.id} delay={0.15 + i * 0.1} className="flex-1">
                 <Link to={`/portfolio/${project.id}`} className="group block card-surface overflow-hidden h-full">
-                  <div className={`h-44 bg-gradient-to-br ${placeholderGradients[i + 1]} flex items-center justify-center relative overflow-hidden`}>
-                    <div className="text-accent/20 font-serif text-6xl font-bold select-none">
-                      {project.title.charAt(0)}
-                    </div>
+                  <div className={`h-44 relative overflow-hidden ${!project.image ? `bg-gradient-to-br ${placeholderGradients[i + 1]} flex items-center justify-center` : ''}`}>
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="text-accent/20 font-serif text-6xl font-bold select-none">
+                        {project.title.charAt(0)}
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-bg/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <span className="inline-flex items-center gap-2 text-ink font-medium text-xs bg-bg/80 backdrop-blur-sm px-4 py-2 rounded-full border border-border">
                         View project <ArrowUpRight size={12} aria-hidden="true" />

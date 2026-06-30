@@ -4,7 +4,7 @@ date: '2026-04-28'
 category: 'Web Design'
 readTime: '6 min read'
 excerpt: 'Traffic without conversion is just an expensive vanity metric. This is what separates websites that generate business from ones that just sit there.'
-coverImage: ''
+coverImage: '/images/blog/what-makes-a-website-actually-convert.webp'
 featured: 'false'
 ---
 

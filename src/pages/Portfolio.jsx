@@ -91,11 +91,20 @@ export default function Portfolio() {
             {filtered.map((project, i) => (
               <RevealWrapper key={project.id} delay={0.06 * i}>
                 <Link to={`/portfolio/${project.id}`} className="group card-surface overflow-hidden h-full flex flex-col">
-                  {/* Placeholder image */}
-                  <div className={`h-56 bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center relative overflow-hidden`}>
-                    <div className="text-accent/15 font-serif text-9xl font-bold select-none">
-                      {project.title.charAt(0)}
-                    </div>
+                  {/* Project image */}
+                  <div className={`h-56 relative overflow-hidden ${!project.image ? `bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center` : ''}`}>
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="text-accent/15 font-serif text-9xl font-bold select-none">
+                        {project.title.charAt(0)}
+                      </div>
+                    )}
                     <div className="absolute top-4 right-4">
                       <span className="bg-bg-surface/80 backdrop-blur-sm text-ink-muted text-xs px-3 py-1 rounded-full border border-border">
                         {project.year}
