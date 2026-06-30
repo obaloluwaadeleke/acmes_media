@@ -6,6 +6,7 @@ import { Monitor, Layers, Play, Briefcase, Printer, PenTool, ArrowRight, Plus, C
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import HeroReveal from '@/components/ui/HeroReveal';
 import AmbientGlow from '@/components/ui/AmbientGlow';
+import StatsBento from '@/components/ui/StatsBento';
 import { services } from '@/data/services';
 
 // ── Per-service visual config ─────────────────────────────────────────────────
@@ -284,47 +285,28 @@ export default function Services() {
         />
 
         <div className="container-site relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-
-            <div>
-              <RevealWrapper>
-                <h2 className="heading-xl mb-6">Not sure where to start?</h2>
-              </RevealWrapper>
-              <RevealWrapper delay={0.1}>
-                <p className="body-lg max-w-lg mb-8">
-                  Tell us what you're trying to achieve. We'll identify the right services, put together a clear scope, and give you an honest proposal.
-                </p>
-              </RevealWrapper>
-              <RevealWrapper delay={0.2}>
-                <div className="flex flex-wrap gap-4">
-                  <Link to="/contact" className="btn-primary">
-                    Let's talk <ArrowRight size={16} aria-hidden="true" />
-                  </Link>
-                  <Link to="/portfolio" className="btn-ghost">
-                    See our work
-                  </Link>
-                </div>
-              </RevealWrapper>
-            </div>
-
-            <div className="grid grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden">
-              {[
-                { num: '100+', label: 'Projects delivered', sub: 'Across all five service areas'       },
-                { num: '6',    label: 'Core services',      sub: 'Creative and digital under one roof' },
-                { num: '3',    label: 'Countries',          sub: 'Nigeria, UK, and Canada'             },
-                { num: '2016', label: 'Founded',            sub: 'Nearly a decade of work'             },
-              ].map(({ num, label, sub }) => (
-                <RevealWrapper key={label}>
-                  <div className="bg-bg-surface p-6 lg:p-8">
-                    <p className="font-serif text-3xl text-accent mb-1">{num}</p>
-                    <p className="text-ink text-sm font-medium mb-1">{label}</p>
-                    <p className="text-ink-muted text-xs leading-relaxed">{sub}</p>
-                  </div>
-                </RevealWrapper>
-              ))}
-            </div>
-
+          <div className="max-w-lg mb-16">
+            <RevealWrapper>
+              <h2 className="heading-xl mb-6">Not sure where to start?</h2>
+            </RevealWrapper>
+            <RevealWrapper delay={0.1}>
+              <p className="body-lg mb-8">
+                Tell us what you're trying to achieve. We'll identify the right services, put together a clear scope, and give you an honest proposal.
+              </p>
+            </RevealWrapper>
+            <RevealWrapper delay={0.2}>
+              <div className="flex flex-wrap gap-4">
+                <Link to="/contact" className="btn-primary">
+                  Let's talk <ArrowRight size={16} aria-hidden="true" />
+                </Link>
+                <Link to="/portfolio" className="btn-ghost">
+                  See our work
+                </Link>
+              </div>
+            </RevealWrapper>
           </div>
+
+          <StatsBento />
         </div>
       </section>
     </>

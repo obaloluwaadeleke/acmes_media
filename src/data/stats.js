@@ -1,0 +1,48 @@
+export const stats = [
+  {
+    id: 'projects',
+    value: 200,
+    prefix: '',
+    suffix: '+',
+    label: 'Projects delivered',
+    sub: 'Across branding, web, and digital',
+  },
+  {
+    id: 'retention',
+    value: 99.9,
+    decimals: 1,
+    suffix: '%',
+    label: 'Client retention',
+    sub: 'Clients who keep coming back',
+    bar: true,
+  },
+  {
+    id: 'countries',
+    value: 5,
+    suffix: '+',
+    label: 'Countries',
+    sub: 'And growing',
+  },
+  {
+    id: 'on-time',
+    value: 100,
+    suffix: '%',
+    label: 'On-time delivery',
+    sub: 'Every project, on schedule',
+    bar: true,
+  },
+  {
+    id: 'experience',
+    value: 9,
+    suffix: '+',
+    label: 'Years in business',
+    sub: 'A proven track record',
+  },
+  {
+    id: 'services',
+    value: 6,
+    suffix: '+',
+    label: 'Service areas',
+    sub: 'Creative and digital under one roof',
+  },
+];

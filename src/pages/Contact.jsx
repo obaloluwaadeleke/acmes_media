@@ -88,7 +88,7 @@ export default function Contact() {
           <HeroReveal delay={0}>
             <span className="label-tag mb-5 block">Get in touch</span>
           </HeroReveal>
-          <h1 className="heading-display max-w-4xl mb-6">
+          <h1 className="heading-display max-w-5xl mb-6">
             <HeroReveal as="span" text="Let's build something " delay={0} />
             <HeroReveal as="span" text="together." delay={0.36} wordClassName="text-accent" />
           </h1>

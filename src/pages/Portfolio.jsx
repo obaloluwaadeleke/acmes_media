@@ -50,7 +50,7 @@ export default function Portfolio() {
           <HeroReveal delay={0}>
             <span className="label-tag mb-5 block">The work</span>
           </HeroReveal>
-          <h1 className="heading-display max-w-4xl mb-6">
+          <h1 className="heading-display max-w-5xl mb-6">
             <HeroReveal as="span" text="Every project is its own" delay={0} />
             <HeroReveal as="span" text="problem to solve." delay={0.6} wordClassName="text-accent" />
           </h1>

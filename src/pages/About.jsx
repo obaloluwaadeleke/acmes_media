@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import HeroReveal from '@/components/ui/HeroReveal';
 import AmbientGlow from '@/components/ui/AmbientGlow';
+import StatsBento from '@/components/ui/StatsBento';
 
 const values = [
   { title: 'Excellence', body: 'We don\'t ship work we\'re not proud of. Every deliverable is held to the same standard.' },
@@ -48,7 +49,7 @@ export default function About() {
           <HeroReveal delay={0}>
             <span className="label-tag mb-5 block">About us</span>
           </HeroReveal>
-          <h1 className="heading-display max-w-4xl mb-6">
+          <h1 className="heading-display max-w-5xl mb-6">
             <HeroReveal as="span" text="Built to do" delay={0} />
             <HeroReveal as="span" text="excellent work," delay={0.36} wordClassName="text-accent" />
             <HeroReveal as="span" text="project after project." delay={0.6} />
@@ -64,7 +65,7 @@ export default function About() {
       {/* Our story */}
       <section className="section-pad bg-bg" aria-labelledby="story-heading">
         <div className="container-site">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div>
               <RevealWrapper>
                 <span className="label-tag mb-4 block">Our story</span>
@@ -90,22 +91,7 @@ export default function About() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { num: '100+', label: 'Projects delivered', sub: 'Across branding, web, and digital' },
-                { num: '3', label: 'Countries', sub: 'Nigeria, UK, and Canada' },
-                { num: '2016', label: 'Founded', sub: 'Nearly a decade of creative work' },
-                { num: '6', label: 'Service areas', sub: 'Creative and digital under one roof' },
-              ].map(({ num, label, sub }) => (
-                <RevealWrapper key={label}>
-                  <div className="card-surface p-6">
-                    <p className="font-serif text-3xl text-accent mb-1">{num}</p>
-                    <p className="text-ink font-medium text-sm mb-1">{label}</p>
-                    <p className="text-ink-muted text-xs leading-relaxed">{sub}</p>
-                  </div>
-                </RevealWrapper>
-              ))}
-            </div>
+            <StatsBento layout="stacked" />
           </div>
         </div>
       </section>

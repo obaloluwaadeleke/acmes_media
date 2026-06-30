@@ -39,7 +39,7 @@ export default function Blog() {
     <>
       <Helmet>
         <title>Blog — Acmes Media</title>
-        <meta name="description" content="Notes, ideas, and the occasional strong opinion. Articles on branding, web design, digital marketing, business growth, technology, and creative strategy." />
+        <meta name="description" content="Notes, ideas, and the occasional  strong opinion. Articles on branding, web design, digital marketing, business growth, technology, and creative strategy." />
         <link rel="canonical" href="https://acmesmedia.com/blog" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://acmesmedia.com/blog" />
@@ -60,7 +60,7 @@ export default function Blog() {
           <HeroReveal delay={0}>
             <span className="label-tag mb-5 block">The blog</span>
           </HeroReveal>
-          <h1 className="heading-display max-w-3xl mb-6">
+          <h1 className="heading-display max-w-5xl mb-6">
             <HeroReveal as="span" text="Notes, ideas, and the occasional" delay={0} />
             <HeroReveal as="span" text="strong opinion." delay={0.6} wordClassName="text-accent" />
           </h1>

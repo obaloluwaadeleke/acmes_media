@@ -50,7 +50,7 @@ export default function Hero() {
         </motion.div>
 
         {/* ── Headline — word-split across three lines ─────────────────── */}
-        <h1 className="heading-display max-w-5xl mb-6">
+        <h1 className="heading-display max-w-6xl mb-6">
           <HeroReveal as="span" text="We build brands" delay={0} />
           <br className="hidden sm:block" />
           <HeroReveal as="span" text="and the digital work that " delay={line2Delay} />
@@ -67,30 +67,13 @@ export default function Hero() {
         </motion.p>
 
         {/* CTAs */}
-        <motion.div {...fadeUp(1.72)} className="flex flex-wrap gap-4 mb-20">
+        <motion.div {...fadeUp(1.72)} className="flex flex-wrap gap-4">
           <Link to="/contact" className="btn-primary">
             Let's talk <ArrowRight size={16} aria-hidden="true" />
           </Link>
           <Link to="/portfolio" className="btn-ghost">
             View our work
           </Link>
-        </motion.div>
-
-        {/* Stats bar */}
-        <motion.div {...fadeUp(1.84)}>
-          <div className="flex flex-wrap gap-px border border-border rounded-2xl bg-border overflow-hidden max-w-3xl">
-            {[
-              { num: '100+', label: 'Projects delivered' },
-              { num: '3',    label: 'Countries served'   },
-              { num: '2016', label: 'Founded'             },
-              { num: '6',    label: 'Service areas'       },
-            ].map(({ num, label }) => (
-              <div key={label} className="flex-1 min-w-[120px] bg-bg-surface px-6 py-5">
-                <p className="font-serif text-2xl text-ink mb-1">{num}</p>
-                <p className="text-ink-muted text-xs tracking-wide">{label}</p>
-              </div>
-            ))}
-          </div>
         </motion.div>
 
       </div>
