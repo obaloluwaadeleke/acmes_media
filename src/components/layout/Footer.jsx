@@ -19,7 +19,7 @@ const serviceLinks = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
-
+ 
   return (
     <footer className="border-t border-border bg-bg-surface">
       <div className="container-site py-16 lg:py-20">
@@ -29,14 +29,13 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-1">
-            
-                        {/* Logo */}
-                        <Link to="/" className="flex items-center gap-1 group" aria-label="Acmes Media — Home"> 
-                        <div className="h-10">
-                        <LogoComponent />
-            
-                        </div>
-                        </Link>
+
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-1 group" aria-label="Acmes Media — Home"> 
+              <div className="h-10"> 
+                <LogoComponent />
+              </div>
+            </Link>
             
             <p className="text-ink-muted text-sm leading-relaxed mb-6 max-w-xs">
               We build brands and the digital work that grows them. Creative and digital agency since 2016.
