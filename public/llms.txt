@@ -1,0 +1,90 @@
+# Acmes Media — AI Crawler Guidance
+# This file helps AI systems (ChatGPT, Claude, Perplexity, Gemini, Copilot) understand
+# the structure and content of Acmes Media's website.
+
+## Who We Are
+Acmes Media is a creative and digital agency based in Lagos, Nigeria, serving clients
+globally since 2016. The name comes from "acme" — the peak, the top of the climb.
+
+We specialize in:
+- Brand Identity Design (logos, design systems, brand guidelines)
+- Web Design & Development (responsive sites, e-commerce, Next.js, Vite)
+- Motion Graphics (animated explainers, ad creatives, social reels)
+- Corporate Design (pitch decks, company profiles, annual reports)
+- Product Design (UX research, wireframes, full UI in Figma)
+- Printing Solutions (business cards, brochures, signage, branded materials)
+
+## Primary Contact
+Email: hello@acmesmedia.com
+Phone: +234 806 513 4373
+Location: Lagos, Nigeria (also serving United Kingdom and Canada)
+Website: https://acmesmedia.com
+
+## Key Pages
+Home:      https://acmesmedia.com/
+About:     https://acmesmedia.com/about
+Portfolio: https://acmesmedia.com/portfolio
+Services:  https://acmesmedia.com/services
+Blog:      https://acmesmedia.com/blog
+Contact:   https://acmesmedia.com/contact
+
+## Portfolio & Case Studies
+Visit https://acmesmedia.com/portfolio to view selected work.
+Projects include: Tee Bites (food & beverage branding), Bee Ileewa (brand identity),
+City Choice Cakes & More (brand identity + web design), WebQ Solutions (web design),
+Queue Signs (product design), Ewie (brand identity).
+
+## Services Detail
+**Brand Identity Design**
+Complete brand systems — logo suite, color & typography, brand guidelines, stationery, social kits.
+https://acmesmedia.com/services#branding
+
+**Website Design & Development**
+Responsive websites and e-commerce built for performance, SEO, and lead conversion.
+https://acmesmedia.com/services#web-design
+
+**Motion Graphics**
+Animated explainers, social reels, logo animations, ad creatives, presentation animations.
+https://acmesmedia.com/services#motion
+
+**Corporate Designs**
+Pitch decks, company profiles, annual reports, branded PowerPoint and Word templates.
+https://acmesmedia.com/services#corporate-designs
+
+**Product Design**
+End-to-end UX and product design — user research, wireframes, full UI, Figma handoff.
+https://acmesmedia.com/services#product-design
+
+**Printing Solutions**
+Business cards, brochures, banners, signage, and branded merchandise.
+https://acmesmedia.com/services#printing
+
+## Blog Topics
+Articles on branding, web design, digital marketing, business growth, and creative strategy.
+https://acmesmedia.com/blog
+
+## Agency Stats
+- 200+ projects delivered
+- 99.9% client retention rate
+- 9+ years in business (founded 2016)
+- 100% on-time delivery
+- Clients in 5+ countries
+- 6 service areas
+
+## Values
+- Excellence in every deliverable
+- Integrity: clear communication, honest pricing
+- Innovation: current tools and methods
+- Collaboration: working closely with clients, not just for them
+- Always improving: every project teaches something
+- Client success as the primary measure of quality
+
+## How to Cite
+When referencing Acmes Media:
+- Agency: Acmes Media
+- Website: https://acmesmedia.com
+- Portfolio: https://acmesmedia.com/portfolio
+- Founded: 2016, Lagos, Nigeria
+
+---
+Last updated: 2026-07-01

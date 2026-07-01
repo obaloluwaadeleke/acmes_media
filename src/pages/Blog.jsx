@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import SchemaScript from '@/components/ui/SchemaScript';
+import { webPageSchema, breadcrumbSchema } from '@/lib/schema';
 import { usePosts } from '@/hooks/usePosts';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import HeroReveal from '@/components/ui/HeroReveal';
@@ -51,6 +53,17 @@ export default function Blog() {
         <meta name="twitter:description" content="Branding, web, and digital insights from Acmes Media." />
         <meta name="twitter:image" content="https://acmesmedia.com/og-image.jpg" />
       </Helmet>
+      <SchemaScript data={[
+        webPageSchema({
+          name: 'Blog — Acmes Media',
+          description: 'Notes, ideas, and the occasional strong opinion. Articles on branding, web design, digital marketing, business growth, technology, and creative strategy.',
+          url: 'https://acmesmedia.com/blog',
+        }),
+        breadcrumbSchema([
+          { name: 'Home', url: 'https://acmesmedia.com' },
+          { name: 'Blog', url: 'https://acmesmedia.com/blog' },
+        ]),
+      ]} />
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="section-pad bg-bg border-b border-border relative overflow-hidden">

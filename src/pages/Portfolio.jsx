@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import SchemaScript from '@/components/ui/SchemaScript';
+import { collectionPageSchema, breadcrumbSchema } from '@/lib/schema';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import HeroReveal from '@/components/ui/HeroReveal';
 import AmbientGlow from '@/components/ui/AmbientGlow';
@@ -41,6 +43,13 @@ export default function Portfolio() {
         <meta name="twitter:description" content="Selected branding, web design, and digital work from Acmes Media." />
         <meta name="twitter:image" content="https://acmesmedia.com/og-image.jpg" />
       </Helmet>
+      <SchemaScript data={[
+        collectionPageSchema(),
+        breadcrumbSchema([
+          { name: 'Home', url: 'https://acmesmedia.com' },
+          { name: 'Portfolio', url: 'https://acmesmedia.com/portfolio' },
+        ]),
+      ]} />
 
       {/* Page hero */}
       <section className="section-pad bg-bg border-b border-border relative overflow-hidden">

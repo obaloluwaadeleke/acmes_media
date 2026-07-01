@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowRight } from 'lucide-react';
+import SchemaScript from '@/components/ui/SchemaScript';
+import { webPageSchema, breadcrumbSchema } from '@/lib/schema';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import HeroReveal from '@/components/ui/HeroReveal';
 import AmbientGlow from '@/components/ui/AmbientGlow';
@@ -40,6 +42,17 @@ export default function About() {
         <meta name="twitter:description" content="Creative and digital agency. Our story, mission, and how we work." />
         <meta name="twitter:image" content="https://acmesmedia.com/og-image.jpg" />
       </Helmet>
+      <SchemaScript data={[
+        webPageSchema({
+          name: 'About — Acmes Media',
+          description: 'Acmes Media started in 2016 with one question: what does it take to deliver creative and digital work at a consistently high standard?',
+          url: 'https://acmesmedia.com/about',
+        }),
+        breadcrumbSchema([
+          { name: 'Home', url: 'https://acmesmedia.com' },
+          { name: 'About', url: 'https://acmesmedia.com/about' },
+        ]),
+      ]} />
 
       {/* Page hero */}
       <section className="section-pad bg-bg border-b border-border relative overflow-hidden" aria-label="About page hero">

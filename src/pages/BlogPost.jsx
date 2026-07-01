@@ -1,5 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import SchemaScript from '@/components/ui/SchemaScript';
+import { articleSchema, breadcrumbSchema } from '@/lib/schema';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 import { usePosts } from '@/hooks/usePosts';
 import RevealWrapper from '@/components/ui/RevealWrapper';
@@ -36,6 +38,14 @@ export default function BlogPost() {
         <meta name="description" content={post.excerpt} />
         <link rel="canonical" href={`https://acmesmedia.com/blog/${post.slug}`} />
       </Helmet>
+      <SchemaScript data={[
+        articleSchema(post),
+        breadcrumbSchema([
+          { name: 'Home', url: 'https://acmesmedia.com' },
+          { name: 'Blog', url: 'https://acmesmedia.com/blog' },
+          { name: post.title, url: `https://acmesmedia.com/blog/${post.slug}` },
+        ]),
+      ]} />
 
       <article className="bg-bg min-h-screen">
 

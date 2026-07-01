@@ -1,5 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import SchemaScript from '@/components/ui/SchemaScript';
+import { creativeWorkSchema, breadcrumbSchema } from '@/lib/schema';
 import { ArrowLeft, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { projects } from '@/data/projects';
 import RevealWrapper from '@/components/ui/RevealWrapper';
@@ -39,6 +41,14 @@ export default function ProjectDetail() {
         <meta name="description" content={project.description} />
         <link rel="canonical" href={`https://acmesmedia.com/portfolio/${project.id}`} />
       </Helmet>
+      <SchemaScript data={[
+        creativeWorkSchema(project),
+        breadcrumbSchema([
+          { name: 'Home', url: 'https://acmesmedia.com' },
+          { name: 'Portfolio', url: 'https://acmesmedia.com/portfolio' },
+          { name: project.title, url: `https://acmesmedia.com/portfolio/${project.id}` },
+        ]),
+      ]} />
 
       <section className="bg-bg min-h-screen">
         {/* ── Header ───────────────────────────────────────────────────────── */}

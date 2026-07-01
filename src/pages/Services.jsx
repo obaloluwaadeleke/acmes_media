@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import SchemaScript from '@/components/ui/SchemaScript';
+import { webPageSchema, breadcrumbSchema, serviceSchema } from '@/lib/schema';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Monitor, Layers, Play, Briefcase, Printer, PenTool, ArrowRight, Plus, Check } from 'lucide-react';
 import RevealWrapper from '@/components/ui/RevealWrapper';
@@ -215,6 +217,18 @@ export default function Services() {
         <meta name="twitter:description" content="Six focused creative and digital services from Acmes Media." />
         <meta name="twitter:image" content="https://acmesmedia.com/og-image.jpg" />
       </Helmet>
+      <SchemaScript data={[
+        webPageSchema({
+          name: 'Services — Acmes Media',
+          description: 'Web design, branding, motion graphics, product design, corporate design, and print. Six focused services from one creative and digital agency.',
+          url: 'https://acmesmedia.com/services',
+        }),
+        breadcrumbSchema([
+          { name: 'Home', url: 'https://acmesmedia.com' },
+          { name: 'Services', url: 'https://acmesmedia.com/services' },
+        ]),
+        ...services.map(serviceSchema),
+      ]} />
 
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <section className="min-h-[65vh] flex items-center bg-bg border-b border-border relative overflow-hidden py-32 lg:py-40">
