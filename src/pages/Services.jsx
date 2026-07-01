@@ -243,7 +243,7 @@ export default function Services() {
                 <span className="label-tag mb-6 block">Our services</span>
               </HeroReveal>
               <h1 className="heading-display mb-8">
-                <HeroReveal as="span" text="Six services." delay={0} />
+                <HeroReveal as="span" text="Six services. " delay={0} />
                 <HeroReveal as="span" text="One partner." delay={0.24} wordClassName="text-accent" />
               </h1>
               <HeroReveal delay={0.42}>

@@ -41,13 +41,13 @@ export default function Footer() {
               We build brands and the digital work that grows them. Creative and digital agency since 2016.
             </p>
             <div className="flex gap-3">
-              <a
+              {/* <a
                 href="https://www.linkedin.com/company/acmesmedia"
                 className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-ink-muted hover:border-accent hover:text-accent transition-colors duration-200 text-xs font-medium"
                 aria-label="LinkedIn"
                 rel="noopener noreferrer"
                 target="_blank"
-              >in</a>
+              >in</a> */}
               <a
                 href="https://instagram.com/acmesmedia"
                 className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-ink-muted hover:border-accent hover:text-accent transition-colors duration-200 text-xs font-medium"
@@ -56,7 +56,7 @@ export default function Footer() {
                 target="_blank"
               >Ig</a>
               <a
-                href="https://behance.net/acmesmedia"
+                href="https://behance.net/enochlee2"
                 className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-ink-muted hover:border-accent hover:text-accent transition-colors duration-200 text-xs font-medium"
                 aria-label="Behance"
                 rel="noopener noreferrer"

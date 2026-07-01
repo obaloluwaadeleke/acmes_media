@@ -41,7 +41,7 @@ export function professionalServiceSchema() {
     ],
     sameAs: [
       'https://www.instagram.com/acmesmedia',
-      'https://www.behance.net/acmesmedia',
+      'https://www.behance.net/enochlee2',
     ],
     founder: {
       '@type': 'Person',

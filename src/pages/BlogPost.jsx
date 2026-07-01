@@ -53,7 +53,7 @@ export default function BlogPost() {
         <header className="section-pad border-b border-border relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" aria-hidden="true" />
 
-          <div className="container-site relative z-10 max-w-3xl">
+          <div className="container-site relative z-10 max-w-5xl">
             <HeroReveal delay={0}>
               <Link
                 to="/blog"
@@ -94,17 +94,17 @@ export default function BlogPost() {
 
         {/* ── Cover image ───────────────────────────────────────────────────── */}
         {post.coverImage && (
-          <div className="container-site max-w-3xl pt-10">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-8 lg:pt-10">
             <img
               src={post.coverImage}
               alt={post.title}
-              className="w-full h-72 sm:h-96 object-cover rounded-2xl border border-border"
+              className="w-full h-48 sm:h-80 lg:h-[480px] object-cover rounded-xl sm:rounded-2xl border border-border"
             />
           </div>
         )}
 
         {/* ── Body ──────────────────────────────────────────────────────────── */}
-        <div className="container-site max-w-3xl py-16">
+        <div className="container-site max-w-4xl py-16">
           <RevealWrapper>
             <div
               className="prose prose-invert prose-lg max-w-none

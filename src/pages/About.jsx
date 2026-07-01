@@ -63,8 +63,8 @@ export default function About() {
             <span className="label-tag mb-5 block">About us</span>
           </HeroReveal>
           <h1 className="heading-display max-w-5xl mb-6">
-            <HeroReveal as="span" text="Built to do" delay={0} />
-            <HeroReveal as="span" text="excellent work," delay={0.36} wordClassName="text-accent" />
+            <HeroReveal as="span" text="Built to do " delay={0} />
+            <HeroReveal as="span" text="excellent work, " delay={0.36} wordClassName="text-accent" />
             <HeroReveal as="span" text="project after project." delay={0.6} />
           </h1>
           <HeroReveal delay={0.5}>
@@ -88,17 +88,17 @@ export default function About() {
               </RevealWrapper>
               <RevealWrapper delay={0.1}>
                 <p className="body-lg mb-5">
-                  The name comes from "acme" — the peak, the top of the climb. From day one the point was never just to make things look good. It was to help businesses explain themselves clearly, present well, and compete in markets that don't go easy on anyone.
+                  The name comes from the word "acme" — the peak, the top of the climb, zenith. From day one the approach has been strategy first, design second — every visual decision backed by clear thinking, every project diagnosed at its root rather than treated at the surface.
                 </p>
               </RevealWrapper>
               <RevealWrapper delay={0.15}>
                 <p className="body-md mb-5">
-                  As more of business moved online, we moved with it. The company grew from a creative agency into a full creative and digital one, covering branding, web development, content, and strategy under a single roof.
+                  As more of business moved online, we moved with it. The company grew from a creative agency into a full creative and digital one — covering brand identity, web design, content, and strategy under a single roof. We work with startups, corporate organisations, NGOs, and technology-focused brands who need both creative quality and strategic thinking.
                 </p>
               </RevealWrapper>
               <RevealWrapper delay={0.2}>
                 <p className="body-md">
-                  Today we work with clients in Nigeria, the United Kingdom, and Canada — turning ideas into brands and products that hold up in the real world.
+                  Today we work with clients in Nigeria, the United Kingdom, and Canada — turning ideas into brands and digital products that hold up in the real world.
                 </p>
               </RevealWrapper>
             </div>
@@ -129,6 +129,72 @@ export default function About() {
                 <p className="body-md">
                   To be known internationally as a creative and digital agency that does excellent, useful, genuinely good work — for any type of business, anywhere in the world.
                 </p>
+              </div>
+            </RevealWrapper>
+          </div>
+        </div>
+      </section>
+
+      {/* Founder */}
+      <section className="section-pad bg-bg border-t border-border" aria-labelledby="founder-heading">
+        <div className="container-site">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            <div>
+              <RevealWrapper>
+                <span className="label-tag mb-4 block">The founder</span>
+                <h2 id="founder-heading" className="heading-xl mb-6">
+                  Obaloluwa Enoch Adeleke
+                </h2>
+              </RevealWrapper>
+              <RevealWrapper delay={0.1}>
+                <p className="body-lg mb-5">
+                  Creative Director and Brand Identity Designer at the intersection of strategy, creativity, and technology. Obaloluwa founded Acmes Media on the belief that strong brands are built with intention — through strategy, design thinking, and clear communication.
+                </p>
+              </RevealWrapper>
+              <RevealWrapper delay={0.15}>
+                <p className="body-md mb-8">
+                  With a background spanning brand identity, web design, UI/UX, and digital strategy, he works with startups, corporate organisations, NGOs, and technology-focused brands — diagnosing problems at their root rather than treating symptoms at the surface.
+                </p>
+              </RevealWrapper>
+              <RevealWrapper delay={0.2}>
+                <div className="flex flex-wrap gap-3">
+                  <a href="https://www.behance.net/enochlee2" target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                    Behance
+                  </a>
+                  <a href="https://obaloluwaadeleke.github.io/portfolio/" target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                    Portfolio
+                  </a>
+                </div>
+              </RevealWrapper>
+            </div>
+
+            <RevealWrapper delay={0.15}>
+              <div className="space-y-4">
+                <div className="card-surface p-6">
+                  <span className="text-accent font-mono text-xs tracking-widest mb-4 block">Roles</span>
+                  <ul className="space-y-3">
+                    {[
+                      'Creative Director — Acmes Media',
+                      'Brand Manager — WebQ Solutions',
+                      'Founder — Tech for Teens',
+                    ].map((role) => (
+                      <li key={role} className="flex items-start gap-3">
+                        <span className="text-accent mt-0.5 shrink-0" aria-hidden="true">→</span>
+                        <span className="text-ink text-sm">{role}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="card-surface p-6">
+                  <span className="text-accent font-mono text-xs tracking-widest mb-4 block">Expertise</span>
+                  <div className="flex flex-wrap gap-2">
+                    {['Brand Identity Design', 'Web Design', 'UI/UX Design', 'Brand Strategy', 'Digital Strategy', 'Brand Management'].map((skill) => (
+                      <span key={skill} className="text-xs text-ink-muted border border-border px-3 py-1 rounded-full">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </RevealWrapper>
           </div>

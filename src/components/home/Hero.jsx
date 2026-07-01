@@ -51,7 +51,7 @@ export default function Hero() {
 
         {/* ── Headline — word-split across three lines ─────────────────── */}
         <h1 className="heading-display max-w-6xl mb-6">
-          <HeroReveal as="span" text="We build brands" delay={0} />
+          <HeroReveal as="span" text="We build brands " delay={0} />
           <br className="hidden sm:block" />
           <HeroReveal as="span" text="and the digital work that " delay={line2Delay} />
           <br className="hidden sm:block" />
