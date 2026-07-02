@@ -117,13 +117,6 @@ export default function ProjectDetail() {
                   <div className="space-y-4">
                     <div>
                       <h3 className="text-xs text-accent uppercase tracking-widest font-sans font-medium mb-1">
-                        Timeline
-                      </h3>
-                      <p className="text-ink font-medium text-sm">{project.year}</p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-xs text-accent uppercase tracking-widest font-sans font-medium mb-1">
                         Services Provided
                       </h3>
                       <div className="flex flex-wrap gap-1.5 mt-2">

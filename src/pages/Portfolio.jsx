@@ -117,6 +117,13 @@ export default function Portfolio() {
                   </div>
 
                   <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-center gap-2 flex-wrap mb-3">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="text-xs text-ink-muted border border-border px-2.5 py-0.5 rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                     <h2 className="text-ink font-serif text-xl mb-2 group-hover:text-accent transition-colors duration-200">
                       {project.title}
                     </h2>
