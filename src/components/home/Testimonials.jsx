@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import { testimonials } from '@/data/testimonials';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -6,6 +7,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 export default function Testimonials() {
   const [active, setActive] = useState(0);
   const total = testimonials.length;
+  const shouldReduce = useReducedMotion();
 
   const prev = () => setActive((a) => (a - 1 + total) % total);
   const next = () => setActive((a) => (a + 1) % total);
@@ -15,11 +17,12 @@ export default function Testimonials() {
   return (
     <section className="section-pad bg-bg-surface border-t border-border" aria-labelledby="testimonials-heading">
       <div className="container-site">
-
         <div className="max-w-4xl mx-auto">
+
           <RevealWrapper>
             <span className="label-tag mb-4 block text-center">Client testimonials</span>
           </RevealWrapper>
+
           <RevealWrapper delay={0.1}>
             <h2 id="testimonials-heading" className="heading-xl text-center mb-16">
               What clients <em className="text-accent not-italic">say.</em>
@@ -27,27 +30,51 @@ export default function Testimonials() {
           </RevealWrapper>
 
           <RevealWrapper delay={0.15}>
-            <div className="card-surface p-8 md:p-12 relative" aria-live="polite" aria-atomic="true">
-              {/* Decorative quote mark */}
-              <span className="absolute top-8 right-10 font-serif text-8xl text-accent/10 leading-none select-none" aria-hidden="true">"</span>
+            {/* Glow wrapper — positions the blurred halo behind the card */}
+            <div className="relative">
 
-              <blockquote>
-                <p className="font-serif text-xl md:text-2xl text-ink leading-relaxed mb-8">
-                  "{t.quote}"
-                </p>
-                <footer className="flex items-center gap-4">
-                  <div
-                    className="w-11 h-11 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent text-sm font-medium shrink-0"
-                    aria-hidden="true"
-                  >
-                    {t.initials}
-                  </div>
-                  <div>
-                    <p className="text-ink font-medium text-sm">{t.name}</p>
-                    <p className="text-ink-muted text-xs">{t.title}, {t.company}</p>
-                  </div>
-                </footer>
-              </blockquote>
+              {/* Glowing shadow — blurred gold halo behind the card, breathing pulse */}
+              <motion.div
+                className="absolute rounded-2xl pointer-events-none"
+                style={{
+                  inset: '-14px',
+                  background: 'rgba(200,169,110,0.35)',
+                  filter: 'blur(40px)',
+                }}
+                animate={shouldReduce ? { opacity: 0.22 } : { opacity: [0.22, 0.48, 0.22] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+                aria-hidden="true"
+              />
+
+              {/* Card */}
+              <div className="card-surface p-8 md:p-12 relative" aria-live="polite" aria-atomic="true">
+                {/* Decorative quote mark */}
+                <span
+                  className="absolute top-8 right-10 font-serif text-8xl text-accent/10 leading-none select-none"
+                  aria-hidden="true"
+                >
+                  "
+                </span>
+
+                <blockquote>
+                  <p className="font-serif text-xl md:text-2xl text-ink leading-relaxed mb-8">
+                    "{t.quote}"
+                  </p>
+                  <footer className="flex items-center gap-4">
+                    <div
+                      className="w-11 h-11 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent text-sm font-medium shrink-0"
+                      aria-hidden="true"
+                    >
+                      {t.initials}
+                    </div>
+                    <div>
+                      <p className="text-ink font-medium text-sm">{t.name}</p>
+                      <p className="text-ink-muted text-xs">{t.title}, {t.company}</p>
+                    </div>
+                  </footer>
+                </blockquote>
+              </div>
+
             </div>
           </RevealWrapper>
 
