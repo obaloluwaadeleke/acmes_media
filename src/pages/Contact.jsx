@@ -30,6 +30,9 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '', company: '', email: '', phone: '', service: '', budget: '', message: '',
   });
+  // Honeypot: humans never see/fill this; bots do. Formspree drops any
+  // submission where `_gotcha` is non-empty (verified server-side).
+  const [gotcha, setGotcha] = useState('');
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
@@ -58,7 +61,7 @@ export default function Contact() {
       const res = await fetch('https://formspree.io/f/xojrgrlr', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, _gotcha: gotcha }),
       });
       if (res.ok) { setStatus('success'); setFormData({ name: '', company: '', email: '', phone: '', service: '', budget: '', message: '' }); }
       else setStatus('error');
@@ -188,6 +191,20 @@ export default function Contact() {
                   <p className="text-ink-muted text-xs mb-6">
                     <span aria-hidden="true">* </span>Required fields
                   </p>
+
+                  {/* Honeypot — hidden from humans, catches bots. Not for real users. */}
+                  <div aria-hidden="true" className="absolute left-[-9999px] top-[-9999px] w-px h-px overflow-hidden" style={{ opacity: 0 }}>
+                    <label htmlFor="_gotcha">Leave this field empty</label>
+                    <input
+                      id="_gotcha"
+                      name="_gotcha"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={gotcha}
+                      onChange={(e) => setGotcha(e.target.value)}
+                    />
+                  </div>
 
                   <div className="grid sm:grid-cols-2 gap-4 mb-4">
                     <Field
