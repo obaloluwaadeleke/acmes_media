@@ -153,7 +153,7 @@ export default function About() {
               </RevealWrapper>
               <RevealWrapper delay={0.15}>
                 <p className="body-md mb-8">
-                  With a background spanning brand identity, web design, UI/UX, and digital strategy, he works with startups, corporate organisations, NGOs, and technology-focused brands — diagnosing problems at their root rather than treating symptoms at the surface.
+                  With a background spanning brand identity, web design, UI/UX, digital strategy, and AI automation, he works with startups, corporate organisations, NGOs, and technology-focused brands — diagnosing problems at their root rather than treating symptoms at the surface.
                 </p>
               </RevealWrapper>
               <RevealWrapper delay={0.2}>
