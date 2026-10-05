@@ -1,17 +1,18 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Monitor, Layers, Play, Briefcase, PenTool, Printer } from 'lucide-react';
+import { ArrowRight, Sparkles, Monitor, Layers, Play, Briefcase, PenTool } from 'lucide-react';
 import { motion, useReducedMotion, useInView } from 'framer-motion';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import { services } from '@/data/services';
 
+// Home preview shows the first 6 services (AI Automation leads; Printing lives on /services).
 const SERVICE_META = [
+  { Icon: Sparkles,   tag: 'AI'        },
   { Icon: Monitor,    tag: 'Digital'   },
   { Icon: Layers,     tag: 'Creative'  },
   { Icon: Play,       tag: 'Motion'    },
   { Icon: Briefcase,  tag: 'Corporate' },
   { Icon: PenTool,    tag: 'Product'   },
-  { Icon: Printer,    tag: 'Print'     },
 ];
 
 // Zigzag bento: row 1 = 3+2+1, row 2 = 1+2+3
@@ -222,7 +223,7 @@ export default function ServicesPreview() {
 
           {/* Zigzag bento: row1=[3+2+1], row2=[1+2+3] */}
           <div className="grid grid-cols-1 md:grid-cols-6 gap-2.5 md:auto-rows-[minmax(120px,auto)]">
-            {services.map((service, i) => (
+            {services.slice(0, 6).map((service, i) => (
               <ServiceCard
                 key={service.id}
                 service={service}

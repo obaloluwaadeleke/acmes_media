@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import SchemaScript from '@/components/ui/SchemaScript';
 import { webPageSchema, breadcrumbSchema, serviceSchema } from '@/lib/schema';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Monitor, Layers, Play, Briefcase, Printer, PenTool, ArrowRight, Plus, Check } from 'lucide-react';
+import { Sparkles, Monitor, Layers, Play, Briefcase, Printer, PenTool, ArrowRight, Plus, Check } from 'lucide-react';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import HeroReveal from '@/components/ui/HeroReveal';
 import AmbientGlow from '@/components/ui/AmbientGlow';
@@ -13,6 +13,7 @@ import { services } from '@/data/services';
 
 // ── Per-service visual config ─────────────────────────────────────────────────
 const meta = [
+  { Icon: Sparkles,  accent: '#C8A96E', tag: 'AI'        },
   { Icon: Monitor,   accent: '#3B82F6', tag: 'Digital'   },
   { Icon: Layers,    accent: '#F59E0B', tag: 'Creative'  },
   { Icon: Play,      accent: '#06B6D4', tag: 'Motion'    },
@@ -205,16 +206,16 @@ export default function Services() {
     <>
       <Helmet>
         <title>Services — Acmes Media</title>
-        <meta name="description" content="Web design, branding, motion graphics, product design, corporate design, and print. Six focused services from one creative and digital agency." />
+        <meta name="description" content="AI automation, web design, branding, motion graphics, product design, corporate design, and print. Seven focused services from one creative and digital agency." />
         <link rel="canonical" href="https://acmesmedia.com/services" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://acmesmedia.com/services" />
         <meta property="og:title" content="Services — Acmes Media" />
-        <meta property="og:description" content="Web design, branding, motion graphics, product design, corporate design, and print. Six focused services from one creative and digital agency." />
+        <meta property="og:description" content="AI automation, web design, branding, motion graphics, product design, corporate design, and print. Seven focused services from one creative and digital agency." />
         <meta property="og:image" content="https://acmesmedia.com/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Services — Acmes Media" />
-        <meta name="twitter:description" content="Six focused creative and digital services from Acmes Media." />
+        <meta name="twitter:description" content="Seven focused creative and digital services from Acmes Media." />
         <meta name="twitter:image" content="https://acmesmedia.com/og-image.jpg" />
       </Helmet>
       <SchemaScript data={[
@@ -243,12 +244,12 @@ export default function Services() {
                 <span className="label-tag mb-6 block">Our services</span>
               </HeroReveal>
               <h1 className="heading-display mb-8">
-                <HeroReveal as="span" text="Six services. " delay={0} />
+                <HeroReveal as="span" text="Seven services. " delay={0} />
                 <HeroReveal as="span" text="One partner." delay={0.24} wordClassName="text-accent" />
               </h1>
               <HeroReveal delay={0.42}>
                 <p className="body-lg max-w-lg mb-10">
-                  Focused creative and digital work — web, brand, motion, product design, corporate, and print — so your business looks the part and grows in ways you can actually measure.
+                  Focused creative and digital work — AI automation, web, brand, motion, product design, corporate, and print — so your business looks the part and grows in ways you can actually measure.
                 </p>
               </HeroReveal>
               <HeroReveal delay={0.54}>

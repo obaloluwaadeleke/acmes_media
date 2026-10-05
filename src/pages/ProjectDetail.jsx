@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { projects } from '@/data/projects';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import HeroReveal from '@/components/ui/HeroReveal';
+import ProjectGallery from '@/components/portfolio/ProjectGallery';
 
 const gradients = [
   'from-accent/10 to-accent/5',
@@ -86,24 +87,41 @@ export default function ProjectDetail() {
             {/* Visual Showcase */}
             <div className="lg:col-span-2 space-y-8">
               <RevealWrapper>
-                <div className={`h-[300px] sm:h-[450px] rounded-2xl relative overflow-hidden border border-border ${!project.image ? `bg-gradient-to-br ${gradients[projectIndex % gradients.length]} flex items-center justify-center` : ''}`}>
-                  {project.image ? (
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <>
-                      <div className="text-accent/10 font-serif text-[12rem] sm:text-[18rem] font-bold select-none">
-                        {project.title.charAt(0)}
-                      </div>
-                      <div className="absolute inset-0 grid-bg opacity-20" />
-                    </>
-                  )}
-                </div>
+                {project.gallery ? (
+                  <ProjectGallery images={project.gallery} />
+                ) : (
+                  <div className={`h-[300px] sm:h-[450px] rounded-2xl relative overflow-hidden border border-border ${!project.image ? `bg-gradient-to-br ${gradients[projectIndex % gradients.length]} flex items-center justify-center` : ''}`}>
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <>
+                        <div className="text-accent/10 font-serif text-[12rem] sm:text-[18rem] font-bold select-none">
+                          {project.title.charAt(0)}
+                        </div>
+                        <div className="absolute inset-0 grid-bg opacity-20" />
+                      </>
+                    )}
+                  </div>
+                )}
               </RevealWrapper>
+
+              {project.liveUrl && (
+                <RevealWrapper delay={0.1}>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary"
+                  >
+                    Visit live app <ArrowUpRight size={16} aria-hidden="true" />
+                  </a>
+                </RevealWrapper>
+              )}
             </div>
 
             {/* Sidebar Specs */}

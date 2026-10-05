@@ -1,7 +1,15 @@
 export const services = [
   {
-    id: 'web-design',
+    id: 'ai-automation',
     number: '01',
+    title: 'AI Automation',
+    description: 'Practical AI and automation that cuts the busywork and speeds up how a business runs — from custom assistants and chatbots to workflows that connect the tools you already use. We find the repetitive work worth automating and build systems that hold up in daily use.',
+    process: ['Audit & opportunity mapping', 'Solution design', 'Build & integration', 'Testing & guardrails', 'Deployment & training'],
+    deliverables: ['Workflow & process automation (Make, Zapier, n8n)', 'Custom AI assistants, chatbots & agents', 'Custom GPTs & RAG knowledge systems', 'AI integrations into apps & internal tools', 'Lead generation & outreach automation'],
+  },
+  {
+    id: 'web-design',
+    number: '02',
     title: 'Website Design & Development',
     description: 'Responsive websites and online stores built to earn trust, bring in leads, and convert visitors. From marketing sites to e-commerce, every project is designed and developed with performance, SEO, and real growth in mind.',
     process: ['Discovery & strategy', 'Wireframing & prototyping', 'Visual design', 'Development & testing', 'Launch & handover'],
@@ -9,7 +17,7 @@ export const services = [
   },
   {
     id: 'branding',
-    number: '02',
+    number: '03',
     title: 'Branding & Identity Design',
     description: 'Brand systems that stay consistent and make a business look like one that knows what it\'s doing. From logo to full guidelines, we build identities built to last.',
     process: ['Brand discovery', 'Research & positioning', 'Concept development', 'Identity system', 'Brand guidelines'],
@@ -17,7 +25,7 @@ export const services = [
   },
   {
     id: 'motion',
-    number: '03',
+    number: '04',
     title: 'Motion Graphics',
     description: 'Animation and short visual pieces that explain or sell better than static content ever could. For ads, explainers, presentations, and social — motion that earns attention.',
     process: ['Brief & storyboard', 'Script & voiceover', 'Animation', 'Sound design', 'Final delivery'],
@@ -25,7 +33,7 @@ export const services = [
   },
   {
     id: 'corporate-designs',
-    number: '04',
+    number: '05',
     title: 'Corporate Designs',
     description: 'Professional design across pitch decks, company profiles, annual reports, and branded documents — visual consistency that makes every client-facing piece look like it came from the same confident house.',
     process: ['Brief & requirements', 'Research & positioning', 'Design concepts', 'Refinement & feedback', 'Final delivery'],
@@ -33,7 +41,7 @@ export const services = [
   },
   {
     id: 'product-design',
-    number: '05',
+    number: '06',
     title: 'Product Design',
     description: 'End-to-end UX and product design for digital products — from user research to clickable prototype. We design interfaces people actually use and products that grow through iteration.',
     process: ['Discovery & user research', 'Information architecture', 'Wireframing & prototyping', 'UI design & system', 'Handoff & QA support'],
@@ -41,7 +49,7 @@ export const services = [
   },
   {
     id: 'printing',
-    number: '06',
+    number: '07',
     title: 'Printing Solutions',
     description: 'Quality print production for the parts of a brand that still live offline — business cards, brochures, signage, and branded materials that make a physical impression.',
     process: ['Design brief', 'Layout & design', 'Print-ready files', 'Production', 'Delivery'],

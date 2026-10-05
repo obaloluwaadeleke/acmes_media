@@ -1,5 +1,21 @@
 export const projects = [
   {
+    id: 'expense-iq',
+    title: 'ExpenseIQ',
+    category: 'AI Automation',
+    tags: ['AI Agent', 'Fintech', 'Dashboard'],
+    description: 'An AI-assisted business expense management system for Naira spending. Staff file a claim in minutes — vendor, amount, purpose and receipt — every submission is checked automatically, then routed to a manager to approve, decline or request clarification. Managers and admins get the full record, AI reviewer notes, spend totals and approval rates in one dashboard.',
+    outcome: 'Capstone product — taken from concept to a working, deployed AI expense-management app, designed and built end-to-end.',
+    image: '/images/projects/expenseiq/dashboard.webp',
+    gallery: [
+      { src: '/images/projects/expenseiq/dashboard.webp', alt: 'ExpenseIQ admin dashboard — spend overview, spend by department, approval rate and AI reviewer notes', label: 'Dashboard' },
+      { src: '/images/projects/expenseiq/home.webp', alt: 'ExpenseIQ welcome screen with employee and manager/admin entry points', label: 'Welcome' },
+      { src: '/images/projects/expenseiq/file-expense.webp', alt: 'ExpenseIQ file-an-expense form for submitting a claim', label: 'File an expense' },
+    ],
+    liveUrl: 'https://expense-categorisation-iq.lovable.app/',
+    featured: true,
+  },
+  {
     id: 'tee-bites',
     title: 'Tee Bites',
     category: 'Brand Identity',
@@ -67,4 +83,4 @@ export const projects = [
   },
 ];
 
-export const projectCategories = ['All', 'Web Design', 'Brand Identity', 'Marketing', 'Digital'];
+export const projectCategories = ['All', 'AI Automation', 'Web Design', 'Brand Identity', 'Marketing', 'Digital'];

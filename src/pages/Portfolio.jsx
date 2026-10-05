@@ -23,8 +23,10 @@ export default function Portfolio() {
   const filtered =
     activeFilter === 'All'
       ? projects
-      : projects.filter((p) =>
-          p.tags.some((t) => t.toLowerCase().includes(activeFilter.toLowerCase()))
+      : projects.filter(
+          (p) =>
+            p.tags.some((t) => t.toLowerCase().includes(activeFilter.toLowerCase())) ||
+            p.category.toLowerCase().includes(activeFilter.toLowerCase())
         );
 
   return (

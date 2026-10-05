@@ -93,7 +93,7 @@ export default function About() {
               </RevealWrapper>
               <RevealWrapper delay={0.15}>
                 <p className="body-md mb-5">
-                  As more of business moved online, we moved with it. The company grew from a creative agency into a full creative and digital one — covering brand identity, web design, content, and strategy under a single roof. We work with startups, corporate organisations, NGOs, and technology-focused brands who need both creative quality and strategic thinking.
+                  As more of business moved online, we moved with it. The company grew from a creative agency into a full creative, digital, and AI-driven one — covering brand identity, web design, content, strategy, and AI automation under a single roof. We work with startups, corporate organisations, NGOs, and technology-focused brands who need both creative quality and strategic thinking.
                 </p>
               </RevealWrapper>
               <RevealWrapper delay={0.2}>
@@ -188,7 +188,7 @@ export default function About() {
                 <div className="card-surface p-6">
                   <span className="text-accent font-mono text-xs tracking-widest mb-4 block">Expertise</span>
                   <div className="flex flex-wrap gap-2">
-                    {['Brand Identity Design', 'Web Design', 'UI/UX Design', 'Brand Strategy', 'Digital Strategy', 'Brand Management'].map((skill) => (
+                    {['Brand Identity Design', 'Web Design', 'UI/UX Design', 'AI Automation', 'Brand Strategy', 'Digital Strategy', 'Brand Management'].map((skill) => (
                       <span key={skill} className="text-xs text-ink-muted border border-border px-3 py-1 rounded-full">
                         {skill}
                       </span>
