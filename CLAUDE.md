@@ -28,7 +28,7 @@ Path alias `@/` → `src/` (defined in both `vite.config.js` and consumed throug
 (`Header` + `<Outlet/>` + `Footer`), with `ScrollToTop` resetting scroll on navigation. Routes:
 Home, About, Services, Portfolio (+ `/portfolio/:id`), Blog (+ `/blog/:slug`), Contact, 404.
 
-Three cross-cutting systems define how this codebase works — understand these before editing:
+Four cross-cutting systems define how this codebase works — understand these before editing:
 
 ### 1. Design tokens are the single source of truth
 Never hardcode brand colors, fonts, or spacing. Everything flows from two files:
@@ -63,15 +63,37 @@ from external design references.
   `import.meta.glob(..., { query: '?raw' })` and parses front-matter manually (no parser dep).
   To add a post, drop in a `.md` file with `title/date/category/readTime/excerpt/coverImage/featured`
   front-matter.
-- **SEO/structured data**: `src/lib/schema.js` exports JSON-LD builders
-  (`professionalServiceSchema`, `breadcrumbSchema`, `creativeWorkSchema`, `articleSchema`, etc.);
-  `SchemaScript` injects them via Helmet. Each page sets its own Helmet title/description/canonical/OG.
-  Site-wide ProfessionalService JSON-LD is hardcoded in `index.html`.
+- **SEO/structured data**: `src/lib/site.js` holds `SITE_URL` (`https://www.acmesmedia.com` — must
+  match Vercel's primary domain; every canonical/og:url/sitemap/JSON-LD URL derives from it).
+  Each page renders `<Seo title description path [image] [type] [noindex] />`
+  (`src/components/ui/Seo.jsx`) for title/description/canonical/OG/Twitter. Pass `title` as a single
+  string (template literal) — React 19 renders a `<title>` with mixed children as empty.
+  `src/lib/schema.js` exports JSON-LD builders (breadcrumb items take site-relative `path`s);
+  `SchemaScript` injects them. Site-wide ProfessionalService + WebSite JSON-LD render from `Layout`.
+  **`index.html` must not carry title/description/canonical/OG/JSON-LD** — React 19 hoists page
+  tags alongside static ones, producing conflicting duplicates.
+
+### 4. Every route is prerendered at build time
+`npm run build` = client build → SSR build of `src/entry-server.jsx` → `scripts/prerender.mjs`,
+which writes `dist/<route>.html` for every route in `entry-server.jsx`'s `routes` list (static pages
++ every project id + every blog slug), `dist/404.html`, `sitemap.xml` and `robots.txt` (both
+generated — don't add them to `public/`). The script fails the build if a page lacks exactly one
+canonical and a non-empty title. `main.jsx` hydrates prerendered HTML (`hydrateRoot`) and falls back
+to `createRoot` on the dev server. Consequences:
+- Render output must be deterministic and SSR-safe: touch `window`/`document` only inside effects.
+- Data a page needs must be available synchronously (blog posts are parsed eagerly in
+  `src/lib/posts.js`; `usePosts()` keeps its `{ posts, loading, error }` shape for a future CMS).
+- A new route must be added to both `src/routes.jsx` and the `routes` list in `entry-server.jsx`.
+- Routes other than Home/NotFound are `React.lazy` chunks behind the `Suspense` in `Layout`.
+- Test the real output with `npx serve -l 4180 dist` after `npm run build` (launch config
+  `acmesmedia-dist`) — `serve` mimics Vercel's clean URLs and 404 handling.
 
 ## Deployment constraints (`vercel.json`)
 
 - Explicit `buildCommand` + `outputDirectory: dist` are required — the site shipped blank without them.
-- SPA rewrite sends all routes to `/index.html`.
+- No SPA rewrite: routes are real prerendered files served via `cleanUrls` (`/about` → `about.html`,
+  `trailingSlash: false`). Unmatched URLs get `404.html` with a true 404 status. Don't re-add a
+  catch-all rewrite to `/index.html` — it turns every unknown URL into a soft 404.
 - **HTML is served `no-cache`** (Cloudflare would otherwise serve a stale `index.html` pointing at
   old hashed assets after a deploy); `/assets/*` is immutable long-cache. Keep this split intact.
 

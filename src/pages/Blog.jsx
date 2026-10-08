@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/ui/Seo';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import SchemaScript from '@/components/ui/SchemaScript';
@@ -39,29 +39,20 @@ export default function Blog() {
 
   return (
     <>
-      <Helmet>
-        <title>Blog — Acmes Media</title>
-        <meta name="description" content="Notes, ideas, and the occasional  strong opinion. Articles on branding, web design, digital marketing, business growth, technology, and creative strategy." />
-        <link rel="canonical" href="https://acmesmedia.com/blog" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://acmesmedia.com/blog" />
-        <meta property="og:title" content="Blog — Acmes Media" />
-        <meta property="og:description" content="Articles on branding, web design, digital marketing, business growth, and creative strategy from the Acmes Media team." />
-        <meta property="og:image" content="https://acmesmedia.com/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Blog — Acmes Media" />
-        <meta name="twitter:description" content="Branding, web, and digital insights from Acmes Media." />
-        <meta name="twitter:image" content="https://acmesmedia.com/og-image.jpg" />
-      </Helmet>
+      <Seo
+        title="Blog — Branding, Web Design & Digital Growth Insights | Acmes Media"
+        description="Notes, ideas, and the occasional strong opinion. Articles on branding, web design, digital marketing, business growth, technology, and creative strategy."
+        path="/blog"
+      />
       <SchemaScript data={[
         webPageSchema({
           name: 'Blog — Acmes Media',
           description: 'Notes, ideas, and the occasional strong opinion. Articles on branding, web design, digital marketing, business growth, technology, and creative strategy.',
-          url: 'https://acmesmedia.com/blog',
+          url: '/blog',
         }),
         breadcrumbSchema([
-          { name: 'Home', url: 'https://acmesmedia.com' },
-          { name: 'Blog', url: 'https://acmesmedia.com/blog' },
+          { name: 'Home', path: '/' },
+          { name: 'Blog', path: '/blog' },
         ]),
       ]} />
 

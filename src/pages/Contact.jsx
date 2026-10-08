@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/ui/Seo';
 import SchemaScript from '@/components/ui/SchemaScript';
 import { webPageSchema, breadcrumbSchema } from '@/lib/schema';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
@@ -70,29 +70,20 @@ export default function Contact() {
 
   return (
     <>
-      <Helmet>
-        <title>Contact — Acmes Media</title>
-        <meta name="description" content="Start a project with Acmes Media. Tell us what you're building — we'll figure out the best way to help." />
-        <link rel="canonical" href="https://acmesmedia.com/contact" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://acmesmedia.com/contact" />
-        <meta property="og:title" content="Contact — Acmes Media" />
-        <meta property="og:description" content="Start a project with Acmes Media. Tell us what you're building — we'll figure out the best way to help." />
-        <meta property="og:image" content="https://acmesmedia.com/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact — Acmes Media" />
-        <meta name="twitter:description" content="Start a project with Acmes Media. Tell us what you're building." />
-        <meta name="twitter:image" content="https://acmesmedia.com/og-image.jpg" />
-      </Helmet>
+      <Seo
+        title="Contact Acmes Media — Start Your Branding or Web Project"
+        description="Start a project with Acmes Media. Tell us what you're building — we'll figure out the best way to help."
+        path="/contact"
+      />
       <SchemaScript data={[
         webPageSchema({
           name: 'Contact — Acmes Media',
           description: "Start a project with Acmes Media. Tell us what you're building — we'll figure out the best way to help.",
-          url: 'https://acmesmedia.com/contact',
+          url: '/contact',
         }),
         breadcrumbSchema([
-          { name: 'Home', url: 'https://acmesmedia.com' },
-          { name: 'Contact', url: 'https://acmesmedia.com/contact' },
+          { name: 'Home', path: '/' },
+          { name: 'Contact', path: '/contact' },
         ]),
       ]} />
 

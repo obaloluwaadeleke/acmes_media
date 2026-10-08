@@ -3,30 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Acmes Media — Creative & Digital Agency</title>
-    <meta name="description" content="Acmes Media is a creative and digital agency. We help businesses look sharper, communicate better, and compete online through branding, web design, and digital strategy. Based in Nigeria, serving clients globally since 2016." />
     <meta name="author" content="Acmes Media" />
     <meta name="theme-color" content="#080808" />
 
-    <link rel="canonical" href="https://acmesmedia.com/" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://acmesmedia.com/" />
-    <meta property="og:title" content="Acmes Media — Creative & Digital Agency" />
-    <meta property="og:description" content="We build brands and the digital work that grows them. Creative and digital agency serving startups, businesses, and institutions since 2016." />
-    <meta property="og:image" content="https://acmesmedia.com/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="en_NG" />
-    <meta property="og:site_name" content="Acmes Media" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Acmes Media — Creative & Digital Agency" />
-    <meta name="twitter:description" content="We build brands and the digital work that grows them." />
-    <meta name="twitter:image" content="https://acmesmedia.com/og-image.jpg" />
+    <!--
+      Title, description, canonical, Open Graph, Twitter and JSON-LD are NOT set here.
+      Each page renders its own via <Seo> / <SchemaScript>, and the build prerenders
+      them into every route's HTML (scripts/prerender.mjs). Static copies here would
+      ship alongside them as conflicting duplicates.
+    -->
 
     <!-- Favicon -->
     <link rel="icon" href="/acmes_media_logo.png" />
@@ -38,42 +23,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
-
-    <!-- JSON-LD ProfessionalService — site-wide -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Acmes Media",
-      "url": "https://acmesmedia.com",
-      "logo": "https://acmesmedia.com/acmes_media_logo.png",
-      "image": "https://acmesmedia.com/og-image.jpg",
-      "description": "Creative and digital agency helping businesses look sharper, communicate better, and compete online through branding, web design, motion graphics, and digital strategy.",
-      "foundingDate": "2016",
-      "email": "hello@acmesmedia.com",
-      "telephone": "+2348065134373",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lagos",
-        "addressCountry": "NG"
-      },
-      "areaServed": ["NG", "GB", "CA"],
-      "serviceType": ["Brand Identity Design", "Web Design & Development", "Motion Graphics", "Corporate Design", "Product Design", "Printing Solutions"],
-      "knowsAbout": ["Brand Identity Design", "Logo Design", "Web Design", "Web Development", "Motion Graphics", "Digital Strategy", "Product Design"],
-      "sameAs": [
-        "https://www.instagram.com/acmesmedia",
-        "https://www.behance.net/enochlee2"
-      ],
-      "founder": {
-        "@type": "Person",
-        "name": "Obaloluwa Adeleke",
-        "url": "https://acmesmedia.com/about"
-      }
-    }
-    </script>
+    <!--app-head-->
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app-html--></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

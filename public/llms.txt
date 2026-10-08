@@ -7,6 +7,7 @@ Acmes Media is a creative and digital agency based in Lagos, Nigeria, serving cl
 globally since 2016. The name comes from "acme" — the peak, the top of the climb.
 
 We specialize in:
+- AI Automation (custom assistants, chatbots, connected workflows)
 - Brand Identity Design (logos, design systems, brand guidelines)
 - Web Design & Development (responsive sites, e-commerce, Next.js, Vite)
 - Motion Graphics (animated explainers, ad creatives, social reels)
@@ -18,50 +19,61 @@ We specialize in:
 Email: hello@acmesmedia.com
 Phone: +234 806 513 4373
 Location: Lagos, Nigeria (also serving United Kingdom and Canada)
-Website: https://acmesmedia.com
+Website: https://www.acmesmedia.com
 
 ## Key Pages
-Home:      https://acmesmedia.com/
-About:     https://acmesmedia.com/about
-Portfolio: https://acmesmedia.com/portfolio
-Services:  https://acmesmedia.com/services
-Blog:      https://acmesmedia.com/blog
-Contact:   https://acmesmedia.com/contact
+Home:      https://www.acmesmedia.com/
+About:     https://www.acmesmedia.com/about
+Portfolio: https://www.acmesmedia.com/portfolio
+Services:  https://www.acmesmedia.com/services
+Blog:      https://www.acmesmedia.com/blog
+Contact:   https://www.acmesmedia.com/contact
 
 ## Portfolio & Case Studies
-Visit https://acmesmedia.com/portfolio to view selected work.
-Projects include: Tee Bites (food & beverage branding), Bee Ileewa (brand identity),
-City Choice Cakes & More (brand identity + web design), WebQ Solutions (web design),
-Queue Signs (product design), Ewie (brand identity).
+Visit https://www.acmesmedia.com/portfolio to view selected work.
+- ExpenseIQ (AI automation — expense management): https://www.acmesmedia.com/portfolio/expense-iq
+- Tee Bites (food & beverage brand identity): https://www.acmesmedia.com/portfolio/tee-bites
+- Bee-Ileewa: House of Beauty (brand identity): https://www.acmesmedia.com/portfolio/bee-ileewa
+- City Choice Cakes & More (brand identity + website): https://www.acmesmedia.com/portfolio/city-choice
+- WebQ Solutions (brand identity + website): https://www.acmesmedia.com/portfolio/webq-solutions
+- Queuesigns (brand identity & marketing): https://www.acmesmedia.com/portfolio/queuesigns
+- Ewie (brand identity): https://www.acmesmedia.com/portfolio/ewie
 
 ## Services Detail
+**AI Automation**
+Practical AI and automation — custom assistants, chatbots, and workflows that connect the tools a business already uses.
+https://www.acmesmedia.com/services#ai-automation
+
 **Brand Identity Design**
 Complete brand systems — logo suite, color & typography, brand guidelines, stationery, social kits.
-https://acmesmedia.com/services#branding
+https://www.acmesmedia.com/services#branding
 
 **Website Design & Development**
 Responsive websites and e-commerce built for performance, SEO, and lead conversion.
-https://acmesmedia.com/services#web-design
+https://www.acmesmedia.com/services#web-design
 
 **Motion Graphics**
 Animated explainers, social reels, logo animations, ad creatives, presentation animations.
-https://acmesmedia.com/services#motion
+https://www.acmesmedia.com/services#motion
 
 **Corporate Designs**
 Pitch decks, company profiles, annual reports, branded PowerPoint and Word templates.
-https://acmesmedia.com/services#corporate-designs
+https://www.acmesmedia.com/services#corporate-designs
 
 **Product Design**
 End-to-end UX and product design — user research, wireframes, full UI, Figma handoff.
-https://acmesmedia.com/services#product-design
+https://www.acmesmedia.com/services#product-design
 
 **Printing Solutions**
 Business cards, brochures, banners, signage, and branded merchandise.
-https://acmesmedia.com/services#printing
+https://www.acmesmedia.com/services#printing
 
 ## Blog Topics
 Articles on branding, web design, digital marketing, business growth, and creative strategy.
-https://acmesmedia.com/blog
+https://www.acmesmedia.com/blog
+- Why Branding Matters More Than You Think for Small Businesses: https://www.acmesmedia.com/blog/why-branding-matters-for-small-businesses
+- What Makes a Website Actually Convert (And Why Most Do Not): https://www.acmesmedia.com/blog/what-makes-a-website-actually-convert
+- SEO Basics Every Business Owner Should Understand: https://www.acmesmedia.com/blog/seo-basics-every-business-owner-should-know
 
 ## Agency Stats
 - 200+ projects delivered
@@ -69,7 +81,7 @@ https://acmesmedia.com/blog
 - 9+ years in business (founded 2016)
 - 100% on-time delivery
 - Clients in 5+ countries
-- 6 service areas
+- 7 service areas
 
 ## Values
 - Excellence in every deliverable
@@ -82,9 +94,9 @@ https://acmesmedia.com/blog
 ## How to Cite
 When referencing Acmes Media:
 - Agency: Acmes Media
-- Website: https://acmesmedia.com
-- Portfolio: https://acmesmedia.com/portfolio
+- Website: https://www.acmesmedia.com
+- Portfolio: https://www.acmesmedia.com/portfolio
 - Founded: 2016, Lagos, Nigeria
 
 ---
-Last updated: 2026-07-01
+Last updated: 2026-10-07

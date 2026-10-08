@@ -1,49 +1,37 @@
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/ui/Seo';
 import SchemaScript from '@/components/ui/SchemaScript';
 import { articleSchema, breadcrumbSchema } from '@/lib/schema';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 import { usePosts } from '@/hooks/usePosts';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import HeroReveal from '@/components/ui/HeroReveal';
+import NotFound from './NotFound';
 
 export default function BlogPost() {
-  const { slug }          = useParams();
-  const { posts, loading } = usePosts();
-  const post              = posts.find((p) => p.slug === slug);
+  const { slug }  = useParams();
+  const { posts } = usePosts();
+  const post      = posts.find((p) => p.slug === slug);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <span className="text-ink-muted text-sm tracking-widest uppercase animate-pulse">
-          Loading article…
-        </span>
-      </div>
-    );
-  }
+  if (!post) return <NotFound />;
 
-  if (!post) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4">
-        <p className="text-ink-muted">Article not found.</p>
-        <Link to="/blog" className="btn-primary">Back to Blog</Link>
-      </div>
-    );
-  }
+  const path = `/blog/${post.slug}`;
 
   return (
     <>
-      <Helmet>
-        <title>{post.title} — Acmes Media</title>
-        <meta name="description" content={post.excerpt} />
-        <link rel="canonical" href={`https://acmesmedia.com/blog/${post.slug}`} />
-      </Helmet>
+      <Seo
+        title={`${post.title} — Acmes Media`}
+        description={post.excerpt}
+        path={path}
+        image={post.coverImage}
+        type="article"
+      />
       <SchemaScript data={[
         articleSchema(post),
         breadcrumbSchema([
-          { name: 'Home', url: 'https://acmesmedia.com' },
-          { name: 'Blog', url: 'https://acmesmedia.com/blog' },
-          { name: post.title, url: `https://acmesmedia.com/blog/${post.slug}` },
+          { name: 'Home', path: '/' },
+          { name: 'Blog', path: '/blog' },
+          { name: post.title, path },
         ]),
       ]} />
 

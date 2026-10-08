@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/ui/Seo';
 import { ArrowRight, Home } from 'lucide-react';
 
 export default function NotFound() {
   return (
     <>
-      <Helmet>
-        <title>404 — Page Not Found | Acmes Media</title>
-      </Helmet>
+      <Seo
+        title="404 — Page Not Found | Acmes Media"
+        description="The page you're looking for doesn't exist or may have been moved."
+        noindex
+      />
 
       <section className="min-h-[80vh] flex flex-col items-center justify-center bg-bg relative overflow-hidden px-5">
         <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" aria-hidden="true" />

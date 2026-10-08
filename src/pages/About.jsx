@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/ui/Seo';
 import { ArrowRight } from 'lucide-react';
 import SchemaScript from '@/components/ui/SchemaScript';
 import { webPageSchema, breadcrumbSchema } from '@/lib/schema';
@@ -28,29 +28,20 @@ const process = [
 export default function About() {
   return (
     <>
-      <Helmet>
-        <title>About — Acmes Media</title>
-        <meta name="description" content="Acmes Media started in 2016 with one question: what does it take to deliver creative and digital work at a high standard, every time? Our story, mission, and how we work." />
-        <link rel="canonical" href="https://acmesmedia.com/about" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://acmesmedia.com/about" />
-        <meta property="og:title" content="About — Acmes Media" />
-        <meta property="og:description" content="Acmes Media started in 2016 with one question: what does it take to deliver creative work at a high standard, every time? Our story and how we work." />
-        <meta property="og:image" content="https://acmesmedia.com/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About — Acmes Media" />
-        <meta name="twitter:description" content="Creative and digital agency. Our story, mission, and how we work." />
-        <meta name="twitter:image" content="https://acmesmedia.com/og-image.jpg" />
-      </Helmet>
+      <Seo
+        title="About Acmes Media — Lagos Creative & Digital Agency Since 2016"
+        description="Acmes Media started in 2016 with one question: what does it take to deliver creative and digital work at a high standard, every time? Our story, mission, and how we work."
+        path="/about"
+      />
       <SchemaScript data={[
         webPageSchema({
           name: 'About — Acmes Media',
           description: 'Acmes Media started in 2016 with one question: what does it take to deliver creative and digital work at a consistently high standard?',
-          url: 'https://acmesmedia.com/about',
+          url: '/about',
         }),
         breadcrumbSchema([
-          { name: 'Home', url: 'https://acmesmedia.com' },
-          { name: 'About', url: 'https://acmesmedia.com/about' },
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/about' },
         ]),
       ]} />
 

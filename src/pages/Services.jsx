@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/ui/Seo';
 import SchemaScript from '@/components/ui/SchemaScript';
 import { webPageSchema, breadcrumbSchema, serviceSchema } from '@/lib/schema';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -204,29 +204,20 @@ function ServiceRow({ service, m, index }) {
 export default function Services() {
   return (
     <>
-      <Helmet>
-        <title>Services — Acmes Media</title>
-        <meta name="description" content="AI automation, web design, branding, motion graphics, product design, corporate design, and print. Seven focused services from one creative and digital agency." />
-        <link rel="canonical" href="https://acmesmedia.com/services" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://acmesmedia.com/services" />
-        <meta property="og:title" content="Services — Acmes Media" />
-        <meta property="og:description" content="AI automation, web design, branding, motion graphics, product design, corporate design, and print. Seven focused services from one creative and digital agency." />
-        <meta property="og:image" content="https://acmesmedia.com/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Services — Acmes Media" />
-        <meta name="twitter:description" content="Seven focused creative and digital services from Acmes Media." />
-        <meta name="twitter:image" content="https://acmesmedia.com/og-image.jpg" />
-      </Helmet>
+      <Seo
+        title="Services — AI Automation, Web Design & Branding | Acmes Media"
+        description="AI automation, web design, branding, motion graphics, product design, corporate design, and print. Seven focused services from one creative and digital agency."
+        path="/services"
+      />
       <SchemaScript data={[
         webPageSchema({
           name: 'Services — Acmes Media',
-          description: 'Web design, branding, motion graphics, product design, corporate design, and print. Six focused services from one creative and digital agency.',
-          url: 'https://acmesmedia.com/services',
+          description: 'AI automation, web design, branding, motion graphics, product design, corporate design, and print. Seven focused services from one creative and digital agency.',
+          url: '/services',
         }),
         breadcrumbSchema([
-          { name: 'Home', url: 'https://acmesmedia.com' },
-          { name: 'Services', url: 'https://acmesmedia.com/services' },
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
         ]),
         ...services.map(serviceSchema),
       ]} />

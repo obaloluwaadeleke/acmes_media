@@ -7,6 +7,12 @@
       "runtimeArgs": ["run", "dev"],
       "port": 5174,
       "autoPort": true
+    },
+    {
+      "name": "acmesmedia-dist",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve", "-l", "4180", "dist"],
+      "port": 4180
     }
   ]
 }

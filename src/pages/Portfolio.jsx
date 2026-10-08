@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/ui/Seo';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import SchemaScript from '@/components/ui/SchemaScript';
 import { collectionPageSchema, breadcrumbSchema } from '@/lib/schema';
@@ -31,25 +31,16 @@ export default function Portfolio() {
 
   return (
     <>
-      <Helmet>
-        <title>Portfolio — Acmes Media</title>
-        <meta name="description" content="Selected work across branding, web design, e-commerce, and digital products. See how we help businesses solve problems and grow." />
-        <link rel="canonical" href="https://acmesmedia.com/portfolio" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://acmesmedia.com/portfolio" />
-        <meta property="og:title" content="Portfolio — Acmes Media" />
-        <meta property="og:description" content="Selected work across branding, web design, e-commerce, and digital products. See how we help businesses solve problems and grow." />
-        <meta property="og:image" content="https://acmesmedia.com/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Portfolio — Acmes Media" />
-        <meta name="twitter:description" content="Selected branding, web design, and digital work from Acmes Media." />
-        <meta name="twitter:image" content="https://acmesmedia.com/og-image.jpg" />
-      </Helmet>
+      <Seo
+        title="Portfolio — Branding, Web Design & Product Case Studies | Acmes Media"
+        description="Selected work across branding, web design, e-commerce, and digital products. See how we help businesses solve problems and grow."
+        path="/portfolio"
+      />
       <SchemaScript data={[
         collectionPageSchema(),
         breadcrumbSchema([
-          { name: 'Home', url: 'https://acmesmedia.com' },
-          { name: 'Portfolio', url: 'https://acmesmedia.com/portfolio' },
+          { name: 'Home', path: '/' },
+          { name: 'Portfolio', path: '/portfolio' },
         ]),
       ]} />
 

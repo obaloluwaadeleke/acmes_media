@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/ui/Seo';
 import SchemaScript from '@/components/ui/SchemaScript';
 import { webPageSchema } from '@/lib/schema';
 import Hero from '../components/home/Hero';
@@ -12,15 +12,15 @@ import HomeCTA from '../components/home/HomeCTA';
 export default function Home() {
   return (
     <>
-      <Helmet>
-        <title>Acmes Media — Creative & Digital Agency</title>
-        <meta name="description" content="We build brands and the digital work that grows them. Acmes Media is a creative and digital agency serving startups, businesses, and institutions since 2016." />
-        <link rel="canonical" href="https://acmesmedia.com/" />
-      </Helmet>
+      <Seo
+        title="Acmes Media — Branding, Web Design & AI Automation Agency in Lagos"
+        description="We build brands and the digital work that grows them. Acmes Media is a Lagos-based creative and digital agency serving startups, businesses, and institutions since 2016."
+        path="/"
+      />
       <SchemaScript data={webPageSchema({
         name: 'Acmes Media — Creative & Digital Agency',
         description: 'We build brands and the digital work that grows them. Creative and digital agency serving startups, businesses, and institutions since 2016.',
-        url: 'https://acmesmedia.com',
+        url: '/',
       })} />
 
       <Hero />

@@ -1,17 +1,33 @@
-const BASE_URL = 'https://acmesmedia.com';
-const ORG = 'Acmes Media';
-const LOGO = `${BASE_URL}/favicon.svg`;
-const OG   = `${BASE_URL}/og-image.jpg`;
+import { SITE_URL as BASE_URL, SITE_NAME as ORG, DEFAULT_OG_IMAGE as OG, absoluteUrl } from './site';
+import { services } from '@/data/services';
+
+// Google requires a raster logo (≥112px) for Organization / publisher.
+const LOGO = `${BASE_URL}/acmes_media_logo.png`;
+
+// Stable @ids let every page reference the same entities instead of
+// re-declaring them.
+const ORG_ID = `${BASE_URL}/#organization`;
+const WEBSITE_ID = `${BASE_URL}/#website`;
+const FOUNDER_ID = `${BASE_URL}/about#founder`;
+
+const founder = {
+  '@type': 'Person',
+  '@id': FOUNDER_ID,
+  name: 'Obaloluwa Adeleke',
+  url: `${BASE_URL}/about`,
+  worksFor: { '@id': ORG_ID },
+};
 
 export function professionalServiceSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
+    '@id': ORG_ID,
     name: ORG,
     description:
-      'Creative and digital agency helping businesses look sharper, communicate better, and compete online through branding, web design, motion graphics, and digital strategy.',
-    url: BASE_URL,
-    logo: LOGO,
+      'Creative and digital agency helping businesses look sharper, communicate better, and compete online through AI automation, web design, branding, motion graphics, and digital strategy.',
+    url: `${BASE_URL}/`,
+    logo: { '@type': 'ImageObject', url: LOGO, width: 700, height: 700 },
     image: OG,
     email: 'hello@acmesmedia.com',
     telephone: '+2348065134373',
@@ -22,15 +38,9 @@ export function professionalServiceSchema() {
       addressCountry: 'NG',
     },
     areaServed: ['NG', 'GB', 'CA'],
-    serviceType: [
-      'Brand Identity Design',
-      'Web Design & Development',
-      'Motion Graphics',
-      'Corporate Design',
-      'Product Design',
-      'Printing Solutions',
-    ],
+    serviceType: services.map((s) => s.title),
     knowsAbout: [
+      'AI Automation',
       'Brand Identity Design',
       'Logo Design',
       'Web Design',
@@ -43,11 +53,19 @@ export function professionalServiceSchema() {
       'https://www.instagram.com/acmesmedia',
       'https://www.behance.net/enochlee2',
     ],
-    founder: {
-      '@type': 'Person',
-      name: 'Obaloluwa Adeleke',
-      url: `${BASE_URL}/about`,
-    },
+    founder,
+  };
+}
+
+export function webSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': WEBSITE_ID,
+    name: ORG,
+    url: `${BASE_URL}/`,
+    inLanguage: 'en',
+    publisher: { '@id': ORG_ID },
   };
 }
 
@@ -57,11 +75,13 @@ export function webPageSchema({ name, description, url }) {
     '@type': 'WebPage',
     name,
     description,
-    url,
-    isPartOf: { '@type': 'WebSite', name: ORG, url: BASE_URL },
+    url: absoluteUrl(url),
+    isPartOf: { '@id': WEBSITE_ID },
+    about: { '@id': ORG_ID },
   };
 }
 
+// items: [{ name, path }] — paths are site-relative.
 export function breadcrumbSchema(items) {
   return {
     '@context': 'https://schema.org',
@@ -70,28 +90,27 @@ export function breadcrumbSchema(items) {
       '@type': 'ListItem',
       position: i + 1,
       name: item.name,
-      item: item.url,
+      item: absoluteUrl(item.path),
     })),
   };
 }
 
 export function articleSchema(post) {
+  const url = `${BASE_URL}/blog/${post.slug}`;
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt,
-    image: post.coverImage || OG,
+    image: post.coverImage ? absoluteUrl(post.coverImage) : OG,
     datePublished: post.date,
-    dateModified: post.date,
-    url: `${BASE_URL}/blog/${post.slug}`,
-    author: { '@type': 'Organization', name: ORG, url: BASE_URL },
-    publisher: {
-      '@type': 'Organization',
-      name: ORG,
-      logo: { '@type': 'ImageObject', url: LOGO },
-    },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/blog/${post.slug}` },
+    dateModified: post.updated || post.date,
+    url,
+    articleSection: post.category,
+    author: founder,
+    publisher: { '@id': ORG_ID, '@type': 'Organization', name: ORG, logo: { '@type': 'ImageObject', url: LOGO } },
+    isPartOf: { '@id': WEBSITE_ID },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   };
 }
 
@@ -101,11 +120,11 @@ export function creativeWorkSchema(project) {
     '@type': 'CreativeWork',
     name: project.title,
     description: project.description,
-    image: project.image || OG,
-    dateCreated: project.year,
+    image: project.image ? absoluteUrl(project.image) : OG,
+    ...(project.year && { dateCreated: project.year }),
     url: `${BASE_URL}/portfolio/${project.id}`,
     keywords: project.tags?.join(', '),
-    creator: { '@type': 'Organization', name: ORG, url: BASE_URL },
+    creator: { '@id': ORG_ID },
   };
 }
 
@@ -116,7 +135,7 @@ export function serviceSchema(service) {
     name: service.title,
     description: service.description,
     url: `${BASE_URL}/services#${service.id}`,
-    provider: { '@type': 'ProfessionalService', name: ORG, url: BASE_URL },
+    provider: { '@id': ORG_ID },
     areaServed: ['NG', 'GB', 'CA'],
   };
 }
@@ -129,6 +148,7 @@ export function collectionPageSchema() {
     description:
       'Selected projects across branding, web design, digital products, content, and visual communication.',
     url: `${BASE_URL}/portfolio`,
-    creator: { '@type': 'Organization', name: ORG, url: BASE_URL },
+    isPartOf: { '@id': WEBSITE_ID },
+    creator: { '@id': ORG_ID },
   };
 }

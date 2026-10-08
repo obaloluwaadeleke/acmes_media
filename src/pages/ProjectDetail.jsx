@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/ui/Seo';
 import SchemaScript from '@/components/ui/SchemaScript';
 import { creativeWorkSchema, breadcrumbSchema } from '@/lib/schema';
 import { ArrowLeft, ArrowUpRight, CheckCircle2 } from 'lucide-react';
@@ -7,6 +7,7 @@ import { projects } from '@/data/projects';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import HeroReveal from '@/components/ui/HeroReveal';
 import ProjectGallery from '@/components/portfolio/ProjectGallery';
+import NotFound from './NotFound';
 
 const gradients = [
   'from-accent/10 to-accent/5',
@@ -23,31 +24,28 @@ export default function ProjectDetail() {
   const projectIndex = projects.findIndex((p) => p.id === id);
   const project = projects[projectIndex];
 
-  if (!project) {
-    return (
-      <div className="min-h-screen bg-bg flex flex-col items-center justify-center gap-4">
-        <p className="text-ink-muted">Project case study not found.</p>
-        <Link to="/portfolio" className="btn-primary">Back to Portfolio</Link>
-      </div>
-    );
-  }
+  if (!project) return <NotFound />;
 
   // Next project link for continuous browsing
   const nextProject = projects[(projectIndex + 1) % projects.length];
+  const path = `/portfolio/${project.id}`;
 
   return (
     <>
-      <Helmet>
-        <title>{project.title} — Case Study | Acmes Media</title>
-        <meta name="description" content={project.description} />
-        <link rel="canonical" href={`https://acmesmedia.com/portfolio/${project.id}`} />
-      </Helmet>
+      <Seo
+        title={project.title.includes(project.category)
+          ? `${project.title} — Case Study | Acmes Media`
+          : `${project.title} — ${project.category} Case Study | Acmes Media`}
+        description={project.description}
+        path={path}
+        image={project.image || project.gallery?.[0]?.src}
+      />
       <SchemaScript data={[
         creativeWorkSchema(project),
         breadcrumbSchema([
-          { name: 'Home', url: 'https://acmesmedia.com' },
-          { name: 'Portfolio', url: 'https://acmesmedia.com/portfolio' },
-          { name: project.title, url: `https://acmesmedia.com/portfolio/${project.id}` },
+          { name: 'Home', path: '/' },
+          { name: 'Portfolio', path: '/portfolio' },
+          { name: project.title, path },
         ]),
       ]} />
 
