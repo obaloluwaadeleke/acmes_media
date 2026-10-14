@@ -25,6 +25,10 @@ export const routes = [
   { path: '/contact' },
 ];
 
+// Prerendered (so link previews get OG tags) but deliberately kept out of the
+// sitemap and marked noindex on the page itself.
+export const hiddenRoutes = [{ path: '/sales' }];
+
 // prerenderToNodeStream (unlike renderToString) waits for lazy routes to
 // resolve, so the output contains the full page rather than a fallback.
 export async function render(url) {

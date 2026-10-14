@@ -11,7 +11,7 @@ const root = process.cwd();
 const dist = path.join(root, 'dist');
 const ssrDir = path.join(root, 'dist-ssr');
 
-const { render, routes, SITE_URL, NOT_FOUND_ROUTE } = await import(
+const { render, routes, hiddenRoutes, SITE_URL, NOT_FOUND_ROUTE } = await import(
   pathToFileURL(path.join(ssrDir, 'entry-server.js')).href
 );
 
@@ -36,7 +36,7 @@ async function writePage(url, outFile) {
   return page;
 }
 
-for (const { path: url } of routes) {
+for (const { path: url } of [...routes, ...hiddenRoutes]) {
   // /about → about.html; vercel.json `cleanUrls` serves it at /about
   const outFile = url === '/' ? 'index.html' : `${url.slice(1)}.html`;
   const page = await writePage(url, outFile);

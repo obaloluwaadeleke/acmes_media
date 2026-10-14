@@ -3,6 +3,7 @@ import SchemaScript from '@/components/ui/SchemaScript';
 import { webPageSchema } from '@/lib/schema';
 import Hero from '../components/home/Hero';
 import Marquee from '../components/home/Marquee';
+import SalesBanner from '../components/home/SalesBanner';
 import WhoWeAre from '../components/home/WhoWeAre';
 import ServicesPreview from '../components/home/ServicesPreview';
 import FeaturedWork from '../components/home/FeaturedWork';
@@ -25,6 +26,7 @@ export default function Home() {
 
       <Hero />
       <Marquee />
+      <SalesBanner />
       <WhoWeAre />
       <ServicesPreview />
       <FeaturedWork />

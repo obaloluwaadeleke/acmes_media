@@ -4,15 +4,15 @@ import RevealWrapper from '@/components/ui/RevealWrapper';
 import { testimonials } from '@/data/testimonials';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function Testimonials() {
+export default function Testimonials({ items = testimonials }) {
   const [active, setActive] = useState(0);
-  const total = testimonials.length;
+  const total = items.length;
   const shouldReduce = useReducedMotion();
 
   const prev = () => setActive((a) => (a - 1 + total) % total);
   const next = () => setActive((a) => (a + 1) % total);
 
-  const t = testimonials[active];
+  const t = items[active];
 
   return (
     <section className="section-pad bg-bg-surface border-t border-border" aria-labelledby="testimonials-heading">
@@ -81,7 +81,7 @@ export default function Testimonials() {
           {/* Controls */}
           <div className="flex items-center justify-between mt-8">
             <div className="flex gap-2" role="tablist" aria-label="Testimonials">
-              {testimonials.map((_, i) => (
+              {items.map((_, i) => (
                 <button
                   key={i}
                   role="tab"

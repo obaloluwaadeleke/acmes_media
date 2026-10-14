@@ -263,6 +263,48 @@
     transition-duration: 100ms;
   }
 
+  /* Travelling gold border (see components/ui/TravellingRing.jsx).
+     An SVG outline whose bright dash moves at constant speed along the
+     button's perimeter. The old conic ring is hidden; the inset gold fill
+     stays so only a 3px edge shows the ring. The glow is steady, never pulsing. */
+  .cta-live {
+    overflow: hidden;
+    box-shadow: 0 0 26px rgba(200,169,110,0.28), inset 0 1px 0 rgba(255,255,255,0.18);
+  }
+  .cta-live::before {
+    display: none;
+  }
+  .btn-primary.cta-live::after {
+    inset: 3px;
+  }
+  .cta-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .cta-ring__base {
+    fill: none;
+    stroke: rgba(107,80,32,0.75);
+    stroke-width: 6;
+  }
+  .cta-ring__seg {
+    fill: none;
+    stroke-linecap: butt;
+    stroke-width: 6;
+    stroke-dashoffset: calc(var(--l) * 1px);
+    animation: ctaTravel 2.6s linear infinite;
+  }
+  .cta-live > svg:not(.cta-ring) {
+    transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .cta-live:hover > svg:not(.cta-ring) {
+    transform: translateX(4px);
+  }
+
   .btn-text {
     @apply inline-flex items-center gap-2 text-accent font-sans font-medium text-sm
            transition-all duration-300 hover:gap-3;
@@ -340,6 +382,12 @@
 
 @keyframes btnBorderSpin {
   to { --btn-angle: 360deg; }
+}
+
+/* Dash length --l ends at the same head position, then the head advances one
+   full perimeter (pathLength=100). Pattern period is 100 so the loop is seamless. */
+@keyframes ctaTravel {
+  to { stroke-dashoffset: calc((var(--l) - 100) * 1px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

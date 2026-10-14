@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import ScrollToTop from './components/layout/ScrollToTop';
@@ -14,6 +14,7 @@ const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
 const Blog          = lazy(() => import('./pages/Blog'));
 const BlogPost      = lazy(() => import('./pages/BlogPost'));
 const Contact       = lazy(() => import('./pages/Contact'));
+const Sales         = lazy(() => import('./pages/Sales'));
 
 // Router-agnostic route tree: wrapped in <BrowserRouter> by App.jsx and in
 // <StaticRouter> by entry-server.jsx for build-time prerendering.
@@ -22,6 +23,8 @@ export default function AppRoutes() {
     <>
       <ScrollToTop />
       <Routes>
+        {/* Unlisted sales landing page: own chrome, no site Layout, noindex. */}
+        <Route path="/sales" element={<Suspense fallback={<div className="min-h-screen bg-bg" />}><Sales /></Suspense>} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
