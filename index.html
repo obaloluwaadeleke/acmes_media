@@ -23,6 +23,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+    <!-- Google Analytics 4. Skipped on localhost so dev traffic never reaches the property.
+         src/lib/track.js sends the custom /sales events through window.gtag. -->
+    <script>
+      (function () {
+        var host = location.hostname;
+        if (host === 'localhost' || host === '127.0.0.1') return;
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        // Consent: analytics cookies stay off until the visitor accepts (CookieNotice).
+        window.gtag('consent', 'default', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        });
+        try {
+          if (localStorage.getItem('cookie_consent') === 'granted') {
+            window.gtag('consent', 'update', { analytics_storage: 'granted' });
+          }
+        } catch (e) { /* storage blocked */ }
+        window.gtag('config', 'G-YXDNYS0JNV');
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YXDNYS0JNV';
+        document.head.appendChild(s);
+      })();
+    </script>
     <!--app-head-->
   </head>
   <body>

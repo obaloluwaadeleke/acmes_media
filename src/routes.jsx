@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import ScrollToTop from './components/layout/ScrollToTop';
+import CookieNotice from './components/ui/CookieNotice';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 
@@ -22,6 +23,7 @@ export default function AppRoutes() {
   return (
     <>
       <ScrollToTop />
+      <CookieNotice />
       <Routes>
         {/* Unlisted sales landing page: own chrome, no site Layout, noindex. */}
         <Route path="/sales" element={<Suspense fallback={<div className="min-h-screen bg-bg" />}><Sales /></Suspense>} />

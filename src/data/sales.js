@@ -16,7 +16,7 @@ export const REPLY_TIME = 'within 24 hours';
 export const included = [
   {
     title: 'Domain + hosting',
-    body: 'We register your domain, set up hosting and deploy your site. Everything is registered in your name.',
+    body: 'We register your domain in your name, host your site on Vercel and deploy it. Both are included for your first year.',
   },
   {
     title: 'SEO integration',
@@ -143,8 +143,8 @@ export const packages = [
 
 export const reasons = [
   {
-    title: 'You own everything',
-    body: 'Domain, hosting and code are registered in your name. If we never speak again, your site stays online.',
+    title: 'You own your domain and code',
+    body: 'Your domain is registered in your name and the code is yours. If we ever part ways, you can take both and host your site anywhere.',
   },
   {
     title: 'Fast on Nigerian networks',
@@ -181,7 +181,7 @@ export const process = [
 export const faqs = [
   {
     q: 'Are domain and hosting included?',
-    a: 'Yes. Domain registration, hosting setup and deployment are included in every package. Every account is in your name, and you get the credentials at handover. If you already own a domain, we use it.',
+    a: 'Yes, for your first year. We register your domain in your name, host your site on Vercel and deploy it. After the first year you pay the domain and hosting renewals, and we remind you 30 days before each one is due. If you already own a domain, we use it.',
   },
   {
     q: 'What do SEO and GEO integration include?',
