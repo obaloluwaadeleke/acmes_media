@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { motionTokens } from '@/lib/motion-tokens';
+import useIsDesktop from '@/hooks/useIsDesktop';
 import { ArrowUpRight, Check, Globe, Mail, MessageCircle, Search, Send, Sparkles } from 'lucide-react';
 import Seo from '@/components/ui/Seo';
 import RevealWrapper from '@/components/ui/RevealWrapper';
@@ -15,7 +16,7 @@ import { testimonials } from '@/data/testimonials';
 import { track, getAttribution } from '@/lib/track';
 import {
   slots, packages, reasons, process, faqs, work, painPoints, included, includedLine, emailAddOn,
-  packageOptions, whatsappLink, AUTOMATION_PORTFOLIO_URL, REPLY_TIME,
+  packageOptions, heardOptions, whatsappLink, REPLY_TIME,
 } from '@/data/sales';
 
 const UTM = 'utm_source=sales&utm_medium=landing&utm_campaign=web-slots';
@@ -64,10 +65,10 @@ export default function Sales() {
         <Included />
         <Packages />
         <Process />
+        <BookingForm />
         <Reasons />
         <Work />
         <Testimonials items={salesTestimonials} />
-        <BookingForm />
         <Faq />
       </main>
 
@@ -80,7 +81,7 @@ export default function Sales() {
 /* ── Header: logo + one CTA, no main-site nav ─────────────────────────────── */
 function SalesHeader() {
   return (
-    <header className="sticky top-0 z-40 bg-bg/80 backdrop-blur border-b border-border">
+    <header className="sticky top-0 z-40 bg-bg md:bg-bg/80 md:backdrop-blur border-b border-border">
       <div className="container-site flex items-center justify-between h-16 md:h-20">
         <div className="h-8 md:h-10">
           <LogoComponent />
@@ -99,7 +100,9 @@ function Hero() {
   return (
     <section className="section-pad relative overflow-hidden border-b border-border">
       <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" aria-hidden="true" />
-      <AmbientGlow />
+      <div className="hidden md:block">
+        <AmbientGlow />
+      </div>
       <div className="container-site relative z-10">
         <HeroReveal delay={0}>
           <span className="label-tag mb-5 block">
@@ -144,6 +147,7 @@ function Hero() {
 
 function SlotMeter() {
   const shouldReduce = useReducedMotion();
+  const isDesktop = useIsDesktop();
   return (
     <div className="inline-flex flex-col gap-2" role="status" aria-live="polite">
       {/* Dots fill in left to right, then open slots breathe */}
@@ -160,7 +164,7 @@ function SlotMeter() {
             >
               <motion.span
                 className={`block h-full w-full rounded-full ${open ? 'bg-accent' : 'bg-border'}`}
-                animate={open && !shouldReduce ? { opacity: [1, 0.4, 1] } : undefined}
+                animate={open && !shouldReduce && isDesktop ? { opacity: [1, 0.4, 1] } : undefined}
                 transition={{ duration: 2.4, repeat: Infinity, ease: motionTokens.ease.inOut, delay: 2.2 + i * 0.15 }}
               />
             </motion.span>
@@ -221,7 +225,7 @@ function Problem() {
 /* ── Work: outbound links open in a new tab so the funnel stays open ──────── */
 function Work() {
   return (
-    <section className="section-pad bg-bg border-t border-border" aria-labelledby="work-heading">
+    <section className="section-pad bg-bg" aria-labelledby="work-heading">
       <div className="container-site">
         <RevealWrapper>
           <span className="label-tag mb-4 block">Recent work</span>
@@ -273,10 +277,7 @@ function Work() {
         </div>
 
         <RevealWrapper delay={0.2}>
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a href={`${AUTOMATION_PORTFOLIO_URL}?${UTM}`} target="_blank" rel="noopener noreferrer" className="btn-text">
-              Browse the automation portfolio
-            </a>
+          <div className="mt-10 flex items-center justify-center">
             <a href={`/portfolio?${UTM}`} target="_blank" rel="noopener noreferrer" className="btn-text">
               See the full Acmes Media portfolio
             </a>
@@ -398,7 +399,7 @@ function Packages() {
 /* ── Why Acmes Media ────────────────────────────────────────────────────────────── */
 function Reasons() {
   return (
-    <section className="section-pad bg-bg" aria-labelledby="why-heading">
+    <section className="section-pad bg-bg-surface border-y border-border" aria-labelledby="why-heading">
       <div className="container-site">
         <RevealWrapper>
           <span className="label-tag mb-4 block">Why Acmes Media</span>
@@ -450,7 +451,7 @@ function Process() {
 }
 
 /* ── Booking form ─────────────────────────────────────────────────────────── */
-const emptyForm = { name: '', phone: '', email: '', package: '', message: '' };
+const emptyForm = { name: '', phone: '', email: '', package: '', message: '', heard_from: '' };
 
 const naira = (n) => `₦${n.toLocaleString('en-NG')}`;
 // Optional Make.com webhook (set VITE_MAKE_WEBHOOK_URL). Drives the automated email.
@@ -541,7 +542,7 @@ function BookingForm() {
   };
 
   return (
-    <section id="book" className="section-pad bg-bg border-t border-border scroll-mt-20" aria-labelledby="book-heading">
+    <section id={isClosed ? 'book' : undefined} className="section-pad bg-bg border-t border-border" aria-labelledby="book-heading">
       <div className="container-site">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-20">
           <div className="lg:col-span-2">
@@ -568,21 +569,23 @@ function BookingForm() {
                   </li>
                 ))}
               </ul>
-              <a
-                href={isClosed ? waWaitlist : waGeneral}
-                onClick={onWhatsApp('form_side')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost"
-              >
-                <MessageCircle size={15} aria-hidden="true" />
-                {isClosed ? 'Join the waiting list' : 'Prefer to chat? Message us'}
-              </a>
+              {isClosed && (
+                <a
+                  href={waWaitlist}
+                  onClick={onWhatsApp('form_side')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                >
+                  <MessageCircle size={15} aria-hidden="true" />
+                  Join the waiting list
+                </a>
+              )}
             </RevealWrapper>
           </div>
 
           {!isClosed && (
-            <div className="lg:col-span-3">
+            <div id="book" className="lg:col-span-3">
               <RevealWrapper delay={0.1}>
                 {status === 'success' ? (
                   <div role="status" aria-live="polite" className="card-surface p-8 md:p-10 text-center">
@@ -609,6 +612,10 @@ function BookingForm() {
                     aria-label="Website inquiry form"
                     className="card-surface p-6 md:p-8"
                   >
+                    <div className="flex items-baseline justify-between gap-4 mb-1">
+                      <h3 className="font-serif text-2xl text-ink">Book your slot</h3>
+                      <span className="text-accent text-sm shrink-0">{remaining} of {slots.total} open</span>
+                    </div>
                     <p className="text-ink-muted text-xs mb-6">Takes 1 minute. We use your details only to reply about this project.</p>
 
                     {/* Honeypot — hidden from humans, dropped by Formspree when filled. */}
@@ -627,6 +634,9 @@ function BookingForm() {
                     </div>
                     <div className="mb-6">
                       <Field label="What does your business do?" id="message" name="message" placeholder="e.g. Bridal makeup studio in Lekki" value={form.message} onChange={onChange} error={errors.message} required />
+                    </div>
+                    <div className="mb-6">
+                      <SelectField label="How did you hear about us? (optional)" id="heard_from" name="heard_from" value={form.heard_from} onChange={onChange} options={heardOptions} />
                     </div>
 
                     {status === 'error' && (
@@ -651,7 +661,7 @@ function BookingForm() {
 }
 
 const inputCls = (error) =>
-  `w-full bg-bg border rounded-xl px-4 py-3 text-ink text-sm placeholder:text-ink-muted focus:outline-none focus:border-accent transition-colors duration-200 ${error ? 'border-red-500' : 'border-border'}`;
+  `w-full bg-bg border rounded-xl px-4 py-3 text-ink text-base placeholder:text-ink-muted focus:outline-none focus:border-accent transition-colors duration-200 ${error ? 'border-red-500' : 'border-border'}`;
 
 function Field({ label, id, name, type = 'text', value, onChange, error, required, placeholder, autoComplete }) {
   return (
@@ -698,7 +708,7 @@ function SelectField({ label, id, name, value, onChange, options, error, require
 /* ── FAQ ──────────────────────────────────────────────────────────────────── */
 function Faq() {
   return (
-    <section className="section-pad bg-bg-surface border-t border-border" aria-labelledby="faq-heading">
+    <section className="section-pad bg-bg border-t border-border" aria-labelledby="faq-heading">
       <div className="container-site max-w-3xl">
         <RevealWrapper>
           <span className="label-tag mb-4 block">Common questions</span>

@@ -217,6 +217,21 @@ export const faqs = [
   },
 ];
 
+// Optional "How did you hear about us?" answers. Covers WhatsApp, DMs and anything
+// the automatic source detection in src/lib/track.js cannot see.
+export const heardOptions = [
+  'Instagram',
+  'WhatsApp',
+  'Facebook',
+  'X (Twitter)',
+  'LinkedIn',
+  'TikTok',
+  'Google search',
+  'A friend or referral',
+  'Flyer or ad',
+  'Other',
+];
+
 export const packageOptions = [
   'Web Starter (₦200k)',
   'Web Pro (₦400k)',

@@ -386,6 +386,19 @@
 
 /* Dash length --l ends at the same head position, then the head advances one
    full perimeter (pathLength=100). Pattern period is 100 so the loop is seamless. */
+/* Phones: every button ring spinning at once repaints the page each frame and makes
+   scrolling stutter. Rings stay as static gold outlines; only the header CTA moves. */
+@media (max-width: 767px) {
+  .btn-primary::before,
+  .btn-ghost::before,
+  .cta-ring__seg {
+    animation: none;
+  }
+  header .cta-ring__seg {
+    animation: ctaTravel 2.6s linear infinite;
+  }
+}
+
 @keyframes ctaTravel {
   to { stroke-dashoffset: calc((var(--l) - 100) * 1px); }
 }

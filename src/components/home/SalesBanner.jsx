@@ -7,6 +7,7 @@ import TravellingRing from '@/components/ui/TravellingRing';
 import { motionTokens } from '@/lib/motion-tokens';
 import { slots, packages, included, emailAddOn } from '@/data/sales';
 import { track } from '@/lib/track';
+import useIsDesktop from '@/hooks/useIsDesktop';
 
 const remaining = Math.max(slots.total - slots.taken, 0);
 const isClosed = remaining === 0;
@@ -44,20 +45,22 @@ function LoopingCounter({ value }) {
 
 export default function SalesBanner() {
   const shouldReduce = useReducedMotion();
+  const isDesktop = useIsDesktop();
+  const loops = !shouldReduce && isDesktop; // decorative always-on motion: desktop only
 
   return (
     <section className="section-pad bg-bg border-b border-border relative overflow-hidden" aria-labelledby="sales-banner-heading">
       {/* Drifting gold glow: two orbs that sweep across the card edges */}
       <motion.div
-        className="absolute -top-20 right-0 w-[560px] h-[560px] rounded-full bg-accent/25 blur-[90px] pointer-events-none"
+        className="hidden md:block absolute -top-20 right-0 w-[560px] h-[560px] rounded-full bg-accent/25 blur-[90px] pointer-events-none"
         aria-hidden="true"
-        animate={shouldReduce ? undefined : { x: [0, -220, -60, 0], y: [0, 90, -40, 0], scale: [1, 1.15, 0.95, 1] }}
+        animate={loops ? { x: [0, -220, -60, 0], y: [0, 90, -40, 0], scale: [1, 1.15, 0.95, 1] } : undefined}
         transition={{ duration: 9, repeat: Infinity, ease: motionTokens.ease.inOut }}
       />
       <motion.div
-        className="absolute -bottom-24 left-0 w-[480px] h-[480px] rounded-full bg-accent/20 blur-[90px] pointer-events-none"
+        className="hidden md:block absolute -bottom-24 left-0 w-[480px] h-[480px] rounded-full bg-accent/20 blur-[90px] pointer-events-none"
         aria-hidden="true"
-        animate={shouldReduce ? undefined : { x: [0, 200, 60, 0], y: [0, -70, 30, 0], scale: [1, 0.9, 1.15, 1] }}
+        animate={loops ? { x: [0, 200, 60, 0], y: [0, -70, 30, 0], scale: [1, 0.9, 1.15, 1] } : undefined}
         transition={{ duration: 11, repeat: Infinity, ease: motionTokens.ease.inOut, delay: 1 }}
       />
 
@@ -65,7 +68,7 @@ export default function SalesBanner() {
         <RevealWrapper>
           {/* Gentle float */}
           <motion.div
-            animate={shouldReduce ? undefined : { y: [0, -16, 0] }}
+            animate={loops ? { y: [0, -16, 0] } : undefined}
             transition={{ duration: 4.5, repeat: Infinity, ease: motionTokens.ease.inOut }}
           >
             <div className="card-surface p-8 md:p-12">
@@ -133,7 +136,7 @@ export default function SalesBanner() {
                             {/* Open slots breathe; taken slots stay still */}
                             <motion.span
                               className={`block h-2 rounded-full ${open ? 'bg-accent' : 'bg-border'}`}
-                              animate={open && !shouldReduce ? { opacity: [1, 0.4, 1] } : undefined}
+                              animate={open && loops ? { opacity: [1, 0.4, 1] } : undefined}
                               transition={{ duration: 2.4, repeat: Infinity, ease: motionTokens.ease.inOut, delay: 1.8 + i * 0.15 }}
                             />
                           </motion.span>
@@ -164,7 +167,7 @@ export default function SalesBanner() {
                         >
                           <Icon size={16} className="text-accent shrink-0" aria-hidden="true" />
                           {item.title}
-                          {!shouldReduce && (
+                          {loops && (
                             <motion.span
                               aria-hidden="true"
                               className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-accent/40 to-transparent pointer-events-none"
