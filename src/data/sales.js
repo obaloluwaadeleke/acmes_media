@@ -86,12 +86,12 @@ export const packages = [
     tier: 'Starter',
     name: 'Web Starter',
     blurb: 'Your first real web presence, built clean and fast around your brand.',
-    price: '₦200k',
-    priceNgn: 200000,
-    depositNgn: 140000,
-    balanceNgn: 60000,
+    price: '₦250k',
+    priceNgn: 250000,
+    depositNgn: 175000,
+    balanceNgn: 75000,
     delivery: '2 weeks',
-    deposit: 'Deposit to start: ₦140,000',
+    deposit: 'Deposit to start: ₦175,000',
     terms: 'One-time payment. Live in 2 weeks.',
     features: [
       'Up to 5 pages',
@@ -104,17 +104,17 @@ export const packages = [
     id: 'pro',
     tier: 'Most popular',
     name: 'Web Pro',
-    blurb: 'For businesses that need to look established at first glance. Up to 10 pages on a design system built around your brand.',
-    price: '₦400k',
-    priceNgn: 400000,
-    depositNgn: 280000,
-    balanceNgn: 120000,
+    blurb: 'For businesses that need to look established at first glance. Up to 8 pages on a design system built around your brand.',
+    price: '₦550k',
+    priceNgn: 550000,
+    depositNgn: 385000,
+    balanceNgn: 165000,
     delivery: '3 weeks',
-    deposit: 'Deposit to start: ₦280,000',
+    deposit: 'Deposit to start: ₦385,000',
     terms: 'One-time payment. Live in 3 weeks.',
     featured: true,
     features: [
-      'Up to 10 pages',
+      'Up to 8 pages',
       'Custom UI design system',
       'Blog or portfolio section',
       'Sitemap + analytics integration',
@@ -126,8 +126,9 @@ export const packages = [
     tier: 'Full stack',
     name: 'Web Elite',
     blurb: 'Brand identity and website in one engagement, for businesses building something to last.',
-    price: '₦700k+',
-    priceNgn: null,
+    price: '₦1.2M+',
+    priceNgn: 1200000,
+    open: true,
     delivery: 'Scoped on the call',
     deposit: 'Payments agreed on the call',
     terms: 'Custom scope, milestone payments.',
@@ -135,8 +136,14 @@ export const packages = [
       'Full brand identity system',
       'Custom web design + build',
       'Content strategy',
-      'E-commerce ready (optional)',
-      'Priority support for 6 months',
+      'Priority support: 1 hour a month for 6 months',
+    ],
+    // Names only on the page. Prices live in docs/pricing-and-terms.md.
+    addons: [
+      'E-commerce ready',
+      'Chatbot integration',
+      'Automated booking system',
+      'Custom CRM + leads automation',
     ],
   },
 ];
@@ -201,7 +208,7 @@ export const faqs = [
   },
   {
     q: 'Can I edit the site myself after launch?',
-    a: 'Yes. You can change text and images without a developer. For bigger changes, we offer a monthly maintenance plan or one-off updates billed hourly.',
+    a: 'Yes. You can change text and images without a developer. For bigger changes and technical maintenance after launch, we bill by the hour.',
   },
   {
     q: 'How do payments work?',
@@ -209,7 +216,11 @@ export const faqs = [
   },
   {
     q: 'Can you connect my site to WhatsApp, Airtable or AI tools?',
-    a: 'Yes. Acmes Media’s founder, Obaloluwa Adeleke, also builds workflow automations (see the portfolio above). Tell us what you want on the scoping call and we will scope it with you, usually as part of Web Elite.',
+    a: 'Yes. Chatbots, automated booking systems and CRM and lead automations are optional add-ons, usually part of a Web Elite project. Tell us what you need on the scoping call and we will scope and quote it.',
+  },
+  {
+    q: 'Can you run these systems for us after they are built?',
+    a: 'Yes. Acmes Media can manage your booking system, CRM or AI chatbot for you as an ongoing service, so you do not need your own technical person. We agree the scope and the cost with you first.',
   },
   {
     q: 'Why only 10 slots?',
@@ -233,9 +244,9 @@ export const heardOptions = [
 ];
 
 export const packageOptions = [
-  'Web Starter (₦200k)',
-  'Web Pro (₦400k)',
-  'Web Elite (₦700k+)',
+  'Web Starter (₦250k)',
+  'Web Pro (₦550k)',
+  'Web Elite (₦1.2M+)',
   'Not sure yet',
 ];
 

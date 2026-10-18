@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { motionTokens } from '@/lib/motion-tokens';
 import useIsDesktop from '@/hooks/useIsDesktop';
-import { ArrowUpRight, Check, Globe, Mail, MessageCircle, Search, Send, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Check, Globe, Mail, MessageCircle, Plus, Search, Send, Sparkles } from 'lucide-react';
 import Seo from '@/components/ui/Seo';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import HeroReveal from '@/components/ui/HeroReveal';
@@ -49,7 +49,7 @@ export default function Sales() {
   return (
     <div className="min-h-screen bg-bg text-ink">
       <Seo
-        title="Get a Professional Website From ₦200,000 | Acmes Media"
+        title="Get a Professional Website From ₦250,000 | Acmes Media"
         description="Custom websites for Nigerian businesses. Domain, hosting, SEO and GEO included in every package. Web Starter sites go live in 14 days. Only 10 project slots open."
         path="/sales"
         image="/og-sales.jpg"
@@ -118,7 +118,7 @@ function Hero() {
         <HeroReveal delay={0.5}>
           <p className="body-lg max-w-2xl mb-8">
             Acmes Media builds custom websites for Nigerian businesses. Domain, hosting and SEO + GEO setup come included
-            in every package, and Web Starter sites go live in 14 days, from ₦200,000.
+            in every package, and Web Starter sites go live in 14 days, from ₦250,000.
           </p>
         </HeroReveal>
 
@@ -377,6 +377,19 @@ function Packages() {
                     </li>
                   ))}
                 </ul>
+                {pkg.addons && (
+                  <div className="mb-8 pt-5 border-t border-border">
+                    <p className="label-tag mb-3">Optional add-ons</p>
+                    <ul className="space-y-2">
+                      {pkg.addons.map((a) => (
+                        <li key={a} className="flex items-start gap-2 text-sm text-ink-muted">
+                          <Plus size={14} className="text-accent mt-0.5 shrink-0" aria-hidden="true" />
+                          {a}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <a href="#book" onClick={onCta('package', { package: pkg.id })} className={`${pkg.featured ? 'btn-primary' : 'btn-ghost'} justify-center`}>
                   {isClosed ? 'Join waiting list' : `Book ${pkg.name}`}
                 </a>
@@ -462,6 +475,7 @@ const MAKE_WEBHOOK = import.meta.env.VITE_MAKE_WEBHOOK_URL;
 function buildPayload(form) {
   const pkg = packages.find((p) => form.package.startsWith(p.name));
   const hasPrice = Boolean(pkg?.priceNgn);
+  const hasSplit = Boolean(pkg?.depositNgn);
   return {
     _subject: 'Sales page inquiry',
     source: 'sales-page',
@@ -470,10 +484,10 @@ function buildPayload(form) {
     email: form.email.trim(),
     package_id: pkg?.id ?? 'unsure',
     package_name: pkg?.name ?? 'Not sure yet',
-    price: hasPrice ? naira(pkg.priceNgn) : 'Custom, agreed on the call',
-    deposit: hasPrice ? naira(pkg.depositNgn) : 'Agreed on the call',
-    balance: hasPrice ? naira(pkg.balanceNgn) : 'Agreed on the call',
-    payment_plan: hasPrice
+    price: hasPrice ? `${naira(pkg.priceNgn)}${pkg.open ? '+' : ''}` : 'Custom, agreed on the call',
+    deposit: hasSplit ? naira(pkg.depositNgn) : 'Agreed on the call',
+    balance: hasSplit ? naira(pkg.balanceNgn) : 'Agreed on the call',
+    payment_plan: hasSplit
       ? `70% (${naira(pkg.depositNgn)}) to begin, 30% (${naira(pkg.balanceNgn)}) on launch day`
       : 'Milestone payments agreed on the scoping call',
     delivery: pkg?.delivery ?? 'Agreed on the call',

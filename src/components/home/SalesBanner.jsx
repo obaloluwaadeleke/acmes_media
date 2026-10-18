@@ -80,7 +80,7 @@ export default function SalesBanner() {
                     </span>
                     <h2 id="sales-banner-heading" className="heading-xl mb-4">
                       A custom website, live in 14 days.{' '}
-                      <em className="text-accent not-italic whitespace-nowrap">From ₦200,000.</em>
+                      <em className="text-accent not-italic whitespace-nowrap">From ₦250,000.</em>
                     </h2>
                     <p className="body-lg mb-6 max-w-xl">
                       We’re open to 10 website projects right now. Every site is designed and built from scratch on your brand.
