@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { motionTokens } from '@/lib/motion-tokens';
 import useIsDesktop from '@/hooks/useIsDesktop';
-import { ArrowUpRight, Check, Globe, Mail, MessageCircle, Plus, Search, Send, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Bot, CalendarCheck, Check, Globe, Mail, MessageCircle, Plus, Search, Send, ShoppingCart, Sparkles, Workflow } from 'lucide-react';
 import Seo from '@/components/ui/Seo';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 import HeroReveal from '@/components/ui/HeroReveal';
@@ -15,7 +15,7 @@ import { stats } from '@/data/stats';
 import { testimonials } from '@/data/testimonials';
 import { track, getAttribution } from '@/lib/track';
 import {
-  slots, packages, reasons, process, faqs, work, painPoints, included, includedLine, emailAddOn,
+  slots, packages, reasons, process, faqs, work, painPoints, included, includedLine, emailAddOn, systems, systemsFlow,
   packageOptions, heardOptions, whatsappLink, REPLY_TIME,
 } from '@/data/sales';
 
@@ -50,7 +50,7 @@ export default function Sales() {
     <div className="min-h-screen bg-bg text-ink">
       <Seo
         title="Get a Professional Website From ₦250,000 | Acmes Media"
-        description="Custom websites for Nigerian businesses. Domain, hosting, SEO and GEO included in every package. Web Starter sites go live in 14 days. Only 10 project slots open."
+        description="Custom websites and the systems that run with them, for Nigerian businesses. Domain, hosting, SEO and GEO included. Starter sites live in 14 days. Only 10 slots open."
         path="/sales"
         image="/og-sales.jpg"
         noindex
@@ -64,6 +64,7 @@ export default function Sales() {
         <Problem />
         <Included />
         <Packages />
+        <Systems />
         <Process />
         <BookingForm />
         <Reasons />
@@ -117,8 +118,8 @@ function Hero() {
 
         <HeroReveal delay={0.5}>
           <p className="body-lg max-w-2xl mb-8">
-            Acmes Media builds custom websites for Nigerian businesses. Domain, hosting and SEO + GEO setup come included
-            in every package, and Web Starter sites go live in 14 days, from ₦250,000.
+            Acmes Media builds custom websites for Nigerian businesses, and the systems that run with them. Domain, hosting
+            and SEO + GEO come included in every package, and Web Starter sites go live in 14 days, from ₦250,000.
           </p>
         </HeroReveal>
 
@@ -340,6 +341,70 @@ function Included() {
   );
 }
 
+/* ── Systems that run with the website ────────────────────────────────────── */
+const systemIcons = [Bot, CalendarCheck, Workflow, ShoppingCart];
+
+function Systems() {
+  return (
+    <section className="section-pad bg-bg-surface border-y border-border" aria-labelledby="systems-heading">
+      <div className="container-site">
+        <RevealWrapper>
+          <span className="label-tag mb-4 block">Systems that run with your website</span>
+          <h2 id="systems-heading" className="heading-xl mb-4 max-w-4xl">
+            We don’t just build a website, we build <em className="text-accent not-italic">systems that run with it.</em>
+          </h2>
+          <p className="body-lg max-w-2xl mb-10">
+            A website brings people to your door. These systems answer them, book them and follow up, so the work keeps moving when you are busy or offline.
+          </p>
+        </RevealWrapper>
+
+        <RevealWrapper delay={0.1}>
+          <ol className="flex flex-wrap items-center gap-x-3 gap-y-3 mb-12" aria-label="Example of the systems working together">
+            {systemsFlow.map((step, i) => (
+              <li key={step} className="flex items-center gap-3">
+                <span className="rounded-full border border-accent/40 bg-accent/5 px-4 py-2 text-sm text-ink">{step}</span>
+                {i < systemsFlow.length - 1 && <ArrowRight size={16} className="text-accent shrink-0" aria-hidden="true" />}
+              </li>
+            ))}
+          </ol>
+        </RevealWrapper>
+
+        <div className="grid sm:grid-cols-2 gap-6">
+          {systems.map((item, i) => {
+            const Icon = systemIcons[i];
+            return (
+              <RevealWrapper key={item.title} delay={i * 0.08}>
+                <div className="card-surface p-6 h-full">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-11 h-11 rounded-full border border-accent/40 text-accent flex items-center justify-center">
+                      <Icon size={20} aria-hidden="true" />
+                    </div>
+                    <span className="text-xs text-ink-muted border border-border rounded-full px-3 py-1">Optional add-on</span>
+                  </div>
+                  <h3 className="font-serif text-xl text-ink mb-2">{item.title}</h3>
+                  <p className="text-ink-muted text-sm">{item.body}</p>
+                </div>
+              </RevealWrapper>
+            );
+          })}
+        </div>
+
+        <RevealWrapper delay={0.2}>
+          <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
+            <a href="#book" onClick={onCta('systems')} className="btn-ghost justify-center">
+              Tell us what to automate
+              <ArrowRight size={15} aria-hidden="true" />
+            </a>
+            <p className="text-ink-muted text-sm max-w-xl">
+              Systems are scoped and quoted on your first call, usually as part of Web Elite. We can also run them for you after they are built.
+            </p>
+          </div>
+        </RevealWrapper>
+      </div>
+    </section>
+  );
+}
+
 /* ── Packages ─────────────────────────────────────────────────────────────── */
 function Packages() {
   return (
@@ -439,7 +504,7 @@ function Reasons() {
 /* ── Process ──────────────────────────────────────────────────────────────── */
 function Process() {
   return (
-    <section className="section-pad bg-bg-surface border-y border-border" aria-labelledby="process-heading">
+    <section className="section-pad bg-bg" aria-labelledby="process-heading">
       <div className="container-site">
         <RevealWrapper>
           <span className="label-tag mb-4 block">How it works</span>

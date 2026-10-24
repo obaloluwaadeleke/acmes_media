@@ -83,7 +83,7 @@ export default function SalesBanner() {
                       <em className="text-accent not-italic whitespace-nowrap">From ₦250,000.</em>
                     </h2>
                     <p className="body-lg mb-6 max-w-xl">
-                      We’re open to 10 website projects right now. Every site is designed and built from scratch on your brand.
+                      We’re open to 10 website projects right now. Every site is designed and built from scratch on your brand, with the systems that run with it: chatbots, booking and lead automation.
                     </p>
                   </RevealWrapper>
 

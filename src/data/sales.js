@@ -125,7 +125,7 @@ export const packages = [
     id: 'elite',
     tier: 'Full stack',
     name: 'Web Elite',
-    blurb: 'Brand identity and website in one engagement, for businesses building something to last.',
+    blurb: 'Brand identity and website in one engagement, with the systems that run with it when you need them.',
     price: '₦1.2M+',
     priceNgn: 1200000,
     open: true,
@@ -146,6 +146,35 @@ export const packages = [
       'Custom CRM + leads automation',
     ],
   },
+];
+
+// "Systems that run with your website". Optional add-ons, names and benefits only.
+// Prices stay out of the page (see docs/pricing-and-terms.md).
+export const systems = [
+  {
+    title: 'AI chatbot',
+    body: 'Answers common customer questions on your site at any hour, using what your business actually offers, and hands real enquiries to you.',
+  },
+  {
+    title: 'Automated booking',
+    body: 'Customers choose a time and book themselves. Confirmations go out automatically, so nobody has to message back and forth.',
+  },
+  {
+    title: 'CRM + leads automation',
+    body: 'Every enquiry lands in one place, tagged by service, and the right follow-up starts without anyone chasing it.',
+  },
+  {
+    title: 'Online store',
+    body: 'Add product pages and online payments when you are ready to sell, on a site that is already built for it.',
+  },
+];
+
+// One example of the systems working together, shown as a short flow.
+export const systemsFlow = [
+  'A customer asks a question',
+  'The chatbot answers',
+  'They book a time',
+  'The lead lands in your CRM',
 ];
 
 export const reasons = [
