@@ -16,6 +16,7 @@ const founder = {
   name: 'Obaloluwa Adeleke',
   url: `${BASE_URL}/about`,
   worksFor: { '@id': ORG_ID },
+  sameAs: ['https://obaloluwa-automates.vercel.app/'],
 };
 
 export function professionalServiceSchema() {
