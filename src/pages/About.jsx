@@ -155,6 +155,9 @@ export default function About() {
                   <a href="https://obaloluwaadeleke.github.io/portfolio/" target="_blank" rel="noopener noreferrer" className="btn-ghost">
                     Portfolio
                   </a>
+                  <a href="https://obaloluwa-automates.vercel.app/" target="_blank" rel="noopener" className="btn-ghost">
+                    AI automation work
+                  </a>
                 </div>
               </RevealWrapper>
             </div>
