@@ -35,9 +35,27 @@ export function professionalServiceSchema() {
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Lagos',
+      addressRegion: 'Lagos',
       addressCountry: 'NG',
     },
-    areaServed: ['NG', 'GB', 'CA'],
+    // Service-area business — centre point is Lagos. Refine lat/lng to the real
+    // base/office if there's a fixed address, and keep it in sync with the
+    // Google Business Profile once that exists.
+    geo: { '@type': 'GeoCoordinates', latitude: 6.5244, longitude: 3.3792 },
+    foundingLocation: { '@type': 'Place', name: 'Lagos, Nigeria' },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '17:00',
+    },
+    priceRange: '₦₦', // avoid '$$' — react-helmet collapses $$ -> $ in <script> content
+    areaServed: [
+      { '@type': 'City', name: 'Lagos', sameAs: 'https://www.wikidata.org/wiki/Q8673' },
+      { '@type': 'Country', name: 'Nigeria' },
+      { '@type': 'Country', name: 'United Kingdom' },
+      { '@type': 'Country', name: 'Canada' },
+    ],
     serviceType: services.map((s) => s.title),
     knowsAbout: [
       'AI Automation',
