@@ -158,7 +158,8 @@ are left on flyers or share images.
 **Form:** `BookingForm` posts to Formspree (`xojrgrlr`, honeypot `_gotcha`) and, when
 `VITE_MAKE_WEBHOOK_URL` is set (Vercel env var, and a gitignored local `.env`), also to a Make
 webhook. `buildPayload` adds the package money fields from `sales.js` so Make keeps no price table of
-its own. Fields: name, phone (WhatsApp), email, package, message, optional `heard_from`.
+its own. Fields: name, phone (WhatsApp), email, package, message, optional `systems_interest`
+("What would you like to automate?", flags Web Elite leads) and optional `heard_from`.
 
 **Source tracking:** one link everywhere. `getAttribution()` in `track.js` resolves the source from
 `utm_source`, then the outside referrer, then the in-app browser user agent, else `direct`

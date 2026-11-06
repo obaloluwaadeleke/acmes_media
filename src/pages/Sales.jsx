@@ -16,7 +16,7 @@ import { testimonials } from '@/data/testimonials';
 import { track, getAttribution } from '@/lib/track';
 import {
   slots, packages, reasons, process, faqs, work, painPoints, included, includedLine, emailAddOn, systems, systemsFlow,
-  packageOptions, heardOptions, whatsappLink, REPLY_TIME,
+  packageOptions, heardOptions, systemsOptions, whatsappLink, REPLY_TIME,
 } from '@/data/sales';
 
 const UTM = 'utm_source=sales&utm_medium=landing&utm_campaign=web-slots';
@@ -346,13 +346,16 @@ const systemIcons = [Bot, CalendarCheck, Workflow, ShoppingCart];
 
 function Systems() {
   return (
-    <section className="section-pad bg-bg-surface border-y border-border" aria-labelledby="systems-heading">
+    <section id="systems" className="section-pad bg-bg-surface border-y border-border" aria-labelledby="systems-heading">
       <div className="container-site">
         <RevealWrapper>
           <span className="label-tag mb-4 block">Systems that run with your website</span>
           <h2 id="systems-heading" className="heading-xl mb-4 max-w-4xl">
             We don’t just build a website, we build <em className="text-accent not-italic">systems that run with it.</em>
           </h2>
+          <p className="font-serif text-2xl md:text-3xl text-ink mb-5 max-w-3xl">
+            Your chatbot answers. Your calendar books. Your CRM follows up.
+          </p>
           <p className="body-lg max-w-2xl mb-10">
             A website brings people to your door. These systems answer them, book them and follow up, so the work keeps moving when you are busy or offline.
           </p>
@@ -453,6 +456,14 @@ function Packages() {
                         </li>
                       ))}
                     </ul>
+                    <a
+                      href="#systems"
+                      onClick={onCta('elite_systems')}
+                      className="btn-text mt-4 text-sm"
+                    >
+                      See how the systems work
+                      <ArrowRight size={14} aria-hidden="true" />
+                    </a>
                   </div>
                 )}
                 <a href="#book" onClick={onCta('package', { package: pkg.id })} className={`${pkg.featured ? 'btn-primary' : 'btn-ghost'} justify-center`}>
@@ -529,7 +540,7 @@ function Process() {
 }
 
 /* ── Booking form ─────────────────────────────────────────────────────────── */
-const emptyForm = { name: '', phone: '', email: '', package: '', message: '', heard_from: '' };
+const emptyForm = { name: '', phone: '', email: '', package: '', message: '', systems_interest: '', heard_from: '' };
 
 const naira = (n) => `₦${n.toLocaleString('en-NG')}`;
 // Optional Make.com webhook (set VITE_MAKE_WEBHOOK_URL). Drives the automated email.
@@ -613,7 +624,7 @@ function BookingForm() {
           }).catch(() => {});
         }
         setStatus('success');
-        track('form_submit', { package: form.package });
+        track('form_submit', { package: form.package, systems: form.systems_interest || 'none' });
         setForm(emptyForm);
       }
       else { setStatus('error'); track('form_error', { status: res.status }); }
@@ -714,7 +725,8 @@ function BookingForm() {
                     <div className="mb-6">
                       <Field label="What does your business do?" id="message" name="message" placeholder="e.g. Bridal makeup studio in Lekki" value={form.message} onChange={onChange} error={errors.message} required />
                     </div>
-                    <div className="mb-6">
+                    <div className="grid sm:grid-cols-2 gap-4 mb-6">
+                      <SelectField label="What would you like to automate? (optional)" id="systems_interest" name="systems_interest" value={form.systems_interest} onChange={onChange} options={systemsOptions} />
                       <SelectField label="How did you hear about us? (optional)" id="heard_from" name="heard_from" value={form.heard_from} onChange={onChange} options={heardOptions} />
                     </div>
 

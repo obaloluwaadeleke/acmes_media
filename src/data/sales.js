@@ -5,7 +5,7 @@
 // (form hidden, waitlist via WhatsApp). Bump `taken` as slots are confirmed.
 export const slots = { total: 10, taken: 0 };
 
-export const WHATSAPP_NUMBER = '2348065134373';
+export const WHATSAPP_NUMBER = '2349164540101';
 export const whatsappLink = (text) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 
@@ -259,6 +259,17 @@ export const faqs = [
 
 // Optional "How did you hear about us?" answers. Covers WhatsApp, DMs and anything
 // the automatic source detection in src/lib/track.js cannot see.
+// Optional form question: which systems the visitor wants with their website.
+// Helps spot Web Elite leads. Sent to the webhook as `systems_interest`.
+export const systemsOptions = [
+  'AI chatbot',
+  'Automated booking',
+  'CRM + leads automation',
+  'Online store',
+  'More than one of these',
+  'Not sure yet',
+];
+
 export const heardOptions = [
   'Instagram',
   'WhatsApp',
